@@ -1,6 +1,6 @@
 # micelio - expand your hidden dimensions 
 
-## User Stories:
+## As a user you can:
 - explore the four pillars of expansion
 - explore methods for expansion
 - view your growth
