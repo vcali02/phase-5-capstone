@@ -1,33 +1,29 @@
-#import library
-#adds .to_dict() method to model instances
-#allows control over max recursion
-from sqlalchemy_serializer import SerializerMixin
-
 #flask extension; import the class
 from flask_sqlalchemy import SQLAlchemy
-
-from sqlalchemy.orm import validates
-
 #the metadata class is used to store/represent database metadata
 #usually: python classes called ORM models
 #metadata class: define additional database structure 
 from sqlalchemy import MetaData
-
+from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
-
-#password hashing
-#from config import db, bcrypt
-
-#an instance of SQLAlchemy
-db = SQLAlchemy() 
+#import library
+#adds .to_dict() method to model instances
+#allows control over max recursion
+from sqlalchemy_serializer import SerializerMixin
 #an instance of MetaData
 metadata = MetaData(naming_convention={
     #specifies how the name of the foreign key should be generated
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
 })
+#an instance of SQLAlchemy
+#db = SQLAlchemy() 
+db = SQLAlchemy(metadata=metadata)
+
+#password hashing
+#from config import db, bcrypt
+
 #associating MetaData instance with the SQLAlchemy instance to define/manage
 #the structure of the database tables
-db = SQLAlchemy(metadata=metadata)
 
 # Models go here!
 
@@ -38,7 +34,7 @@ db = SQLAlchemy(metadata=metadata)
 # -one nudge prompt has many completed prompts; many completed prompts are a nudge prompt
 # ^the same for journal
 
-# -one completed prompt has one pillar; one pillar has many completed prompts
+# -one completed prompt has one pillar; one pillar has many completed prompts !!ACCESSED THROUGH OTHER RELATIONSHIPS
 
 # -one nudge has many prompts; many nudge prompts belong to one nudge
 # -^ the same for journal
@@ -91,9 +87,6 @@ class CompletedPrompt(db.Model, SerializerMixin):
     # -one journal prompt has many completed prompts; many completed prompts are a journal prompt
     journal_prompt = db.relationship("JournalPrompt", back_populates="completed_prompt")
 
-    #ASSOCIATION PROXY
-    # -one completed prompt has one pillar; one pillar has many completed prompts
-
     #VALIDATION
 
 
@@ -123,6 +116,7 @@ class Nudge(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     image = db.Column(db.String)
     action_type = db.Column(db.String)
+    description = db.Column(db.String)
 
     #FOREIGN KEY
     pillar_id = db.Column(db.Integer, db.ForeignKey("pillars.id"))
@@ -162,6 +156,7 @@ class Journal(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     image = db.Column(db.String)
     action_type = db.Column(db.String)
+    description = db.Column(db.String)
 
     #FOREIGN KEY
     pillar_id = db.Column(db.Integer, db.ForeignKey("pillars.id"))
@@ -182,6 +177,7 @@ class Pillar(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     image = db.Column(db.String)
     pillar_name = db.Column(db.String)
+    description = db.Column(db.String)
 
     #FOREIGN KEY
     #none at this time
