@@ -20,7 +20,7 @@ metadata = MetaData(naming_convention={
 db = SQLAlchemy(metadata=metadata)
 
 #password hashing
-#from config import db, bcrypt
+from config import db, bcrypt
 
 #associating MetaData instance with the SQLAlchemy instance to define/manage
 #the structure of the database tables
@@ -73,6 +73,7 @@ class CompletedPrompt(db.Model, SerializerMixin):
     __tablename__ = "completed_prompts"
 
     id = db.Column(db.Integer, primary_key=True)
+    
 
     #FOREIGN KEY
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
@@ -96,6 +97,7 @@ class NudgePrompt(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     action_prompt = db.Column(db.String)
+    completed_at = db.Column(db.DateTime, server_default=db.func.now())
 
     #FOREIGN KEY
     nudges_id = db.Column(db.Integer, db.ForeignKey("nudges.id"))
@@ -136,6 +138,7 @@ class JournalPrompt(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     action_prompt = db.Column(db.String)
+    completed_at = db.Column(db.DateTime, server_default=db.func.now())
 
     #FOREIGN KEY
     journals_id = db.Column(db.Integer, db.ForeignKey("journals.id"))
