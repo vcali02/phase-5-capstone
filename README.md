@@ -46,7 +46,8 @@ https://www.figma.com/file/hRXCinhvPWBrCFlWpTpQmO/micelio?type=design&node-id=0-
 |/authorize_session | GET | | |
 
 ## React Component Tree
-![Screenshot 2023-06-28 at 2 54 32 PM](https://github.com/vcali02/micelio/assets/122405969/d3ba5be2-3e7c-4c2f-8c0b-87327fe67894)
+![Screenshot 2023-07-04 at 4 14 25 PM](https://github.com/vcali02/micelio/assets/122405969/21c4a5f7-ab7d-4e3a-9cda-47addfdb5f61)
+
 
 
 ## Client-side Routes
@@ -61,5 +62,4 @@ https://www.figma.com/file/hRXCinhvPWBrCFlWpTpQmO/micelio?type=design&node-id=0-
 | /recommended        | Recommended.js     |
 | /growth         | CompletedPrompts.js  |
 
-## Trello Board
-<img src='./Trello.png' alt='Trello'>
+
