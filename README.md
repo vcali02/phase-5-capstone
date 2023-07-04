@@ -68,8 +68,8 @@ https://www.figma.com/file/hRXCinhvPWBrCFlWpTpQmO/micelio?type=design&node-id=0-
 | /about        | About.js  |
 | /pillars      | Pillars.js  |
 | /methods | Journal.js and Nudge.js|
-| /signup    | SignupForm.js  |
-| //login    | LoginForm.js  |
+| /signup    | Auth.js  |
+| //login    | Auth.js  |
 | /recommended        | Recommended.js     |
 | /growth         | CompletedPrompts.js  |
 
