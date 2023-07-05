@@ -24,37 +24,33 @@ https://www.figma.com/file/hRXCinhvPWBrCFlWpTpQmO/micelio?type=design&node-id=0-
 ## API Routes
 | API Route                | Method | Response                                                                                                                                                          |
 |--------------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| /user             | GET    | { "id": 1, "name": "Val", "email": "val@awesome.com", "username": "valCal", "password": ****** }, {..}, {..},...                                                  |
-| /user             | POST   |  { "name": "data", "username": "data", "email": "data@email.com"' "password": "*****" }                                                                            |
-| /user/<int:id>    | GET    |  { "id": 1, "name": "Val", "email": "val@awesome.com", "username": "valCal", "password": "******"  }                                                               |
-| /user/<int:id>    | PATCH  | { "id": 1, "name": "Val", "email": "val@awesome.com", "username": "UpdatedvalCal", "password": "******"  }                                                        |
+| /user             | GET    | user display                                                 |
+| /user             | POST   |  user display                                                                           |
+| /user/<int:id>    | GET    | user display                                                              |
+| /user/<int:id>    | PATCH  | user display                                                      |
 | /user/<int:id>    | DELETE |  {}                                                                                                                                                                |
-| /completed_prompts      | GET    | {     "id" : 2,     "name" : "trail name",     "difficulty" : 5,     "distance" : 2,     "altitude" : 5280,     "description" : "trail description" }, {..}, {..} |
-| /completed_prompts/<int:id> | GET    | {     "id" : 2,     "name" : "trail name",     "difficulty" : 5,     "distance" : 2,     "altitude" : 5280,     "description" : "trail description" }             |
-| /completed_prompts       | POST   |  { "name": "data", "username": "data", "email": "data@email.com"' "password": "*****" }                                                                            |
+| /completed_prompts      | GET    | completed prompts display |
+| /completed_prompts/<int:id> | GET    | completed prompts display         |
+| /completed_prompts       | POST   |  completed prompts display                                                                           |
 | /completed_prompts/<int:id> | DELETE |  {}                                                                                                                                                                |
-| /nudge_prompt            | GET    | {     "id" : 2,     "date" : 06-23-2023,     "adventurer_id" : 1,     "trail_id" : 2 }, {..}, {..},...                                                            |
-| /nudge_prompt/<int:id>   | GET    |  {     "id" : 2,     "date" : 06-23-2023,     "adventurer_id" : 1,     "trail_id" : 2 }                                                                            |
-| /nudge_prompt       | POST   | { "name": "data", "username": "data", "email": "data@email.com"' "password": "*****" }                                                                            |
+| /nudge_prompt            | GET    | nudge prompt display                                                     |
+| /nudge_prompt/<int:id>   | GET    | nudge prompt display                                                                              |
+| /nudge_prompt       | POST   | nudge prompt display                                                                              |
 | /nudge_prompt/<int:id>   | DELETE | {}                                                                                                                                                                |
-| /journal_prompt            | GET    | {     "id" : 2,     "date" : 06-23-2023,     "adventurer_id" : 1,     "trail_id" : 2 }, {..}, {..},...                                                            |
-| /journal_prompt/<int:id>   | GET    | {     "id" : 2,     "date" : 06-23-2023,     "adventurer_id" : 1,     "trail_id" : 2 }                                                                            |
-| /journal_prompt       | POST   |  { "name": "data", "username": "data", "email": "data@email.com"' "password": "*****" }                                                                            |
+| /journal_prompt            | GET    | journal prompt display                                                             |
+| /journal_prompt/<int:id>   | GET    | journal prompt display                                                                          |
+| /journal_prompt       | POST   |  journal prompt display                                                                         |
 | /journal_prompt/<int:id>   | DELETE |  {}                                                                                                                                                              |
-| /nudge           | GET    |   {     "id" : 1,     "review" : "review here",     "adventurer_id" : 2 }, {..}, {..}, ..                                                                           |
-| /journal           | GET    | {     "id" : 1,     "review" : "review here",     "adventurer_id" : 2 }, {..}, {..}, ..                                                                           |
-| /pillar           | GET    |   {     "id" : 1,     "review" : "review here",     "adventurer_id" : 2 }, {..}, {..}, ..                                                                           |
-| /pillar/<int:id> | GET    |  {     "id" : 2,     "name" : "trail name",     "difficulty" : 5,     "distance" : 2,     "altitude" : 5280,     "description" : "trail description" }             |
-| /trail_reviews           | POST   | {     "review" : "review here",     "adventurer_id" : 2, "rating":4  }                                                                                            |
-| /trail_reviews/<int:id>  | GET    | {     "id" : 1,     "review" : "review here",     "adventurer_id" : 2 }                                                                                           |
-| /trail_reviews/<int:id>  | PATCH  |  { "attr" : "data",     "adventurer_id" : 3 }                                                                                                                      |
-| /trail_reviews/<int:id>  | DELETE |    {}                                                                                                                                                                |
-| /recommended      | GET    |   {     "id" : 2,     "name" : "trail name",     "difficulty" : 5,     "distance" : 2,     "altitude" : 5280,     "description" : "trail description" }, {..}, {..} |
-| /recommended/<int:id> | GET    |  {     "id" : 2,     "name" : "trail name",     "difficulty" : 5,     "distance" : 2,     "altitude" : 5280,     "description" : "trail description" }             |
-| /recommended       | POST   |  { "name": "data", "username": "data", "email": "data@email.com"' "password": "*****" }                                                                            |
+| /nudge           | GET    |   nudge display                                                                           |
+| /journal           | GET    | journal display                                                                          |
+| /pillar           | GET    |   pillar display                                          |
+| /pillar/<int:id> | GET    |  pillar display            |
+| /recommended      | GET    |   recommended display  |
+| /recommended/<int:id> | GET    |  recommended display          |
+| /recommended       | POST   |  recommended display                                                                         |
 | /recommended/<int:id> | DELETE |  {}                                                                                                                                                                |
-|/login | POST | {"name":"Val", "password": "******"} |  |
-|/authorize_session | GET |  |
+|/login | POST | success and authorized|  |
+|/logout | DELETE | {} |
 
 ## React Component Tree
 ![Screenshot 2023-07-04 at 4 14 25 PM](https://github.com/vcali02/micelio/assets/122405969/21c4a5f7-ab7d-4e3a-9cda-47addfdb5f61)
