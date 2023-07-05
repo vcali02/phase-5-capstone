@@ -47,9 +47,9 @@ class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    email = db.Column(db.String)
-    username = db.Column(db.String)
+    name = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False)
+    username = db.Column(db.String,nullable=False, unique=True)
     _password_hash = db.Column(db.String)
     image = db.Column(db.String)
     bio = db.Column(db.String)
@@ -65,7 +65,38 @@ class User(db.Model, SerializerMixin):
     # -one user has completed journals through completed prompts
     completed_journals = association_proxy("completed_prompts", "journal_prompt")
 
+    #SERIALIZE RULES
+    serialize_rules = (
+        #"-completed_nudges.nudge_prompt",
+        #"-completed_journals.journal_prompt",
+        #"-completed_prompts.user"
+        "-_password_hash",
+    )
+
     #VALIDATION
+    @validates("name")
+    def validate_name(self, key, name):
+        if not name:
+            raise ValueError("Must include a name.")
+        if len(name) < 1:
+            raise ValueError("Name must be at least 1 character.")
+        return name
+    
+    @validates("username")
+    def validate_username(self, key, username):
+        if not username:
+            raise ValueError("Must include a username.")
+        if len(username) < 5:
+            raise ValueError("Username must be at least 5 characters.")
+        return username
+    
+    @validates('email')
+    def validate_email(self, key, address):
+        if '@' not in address:
+            raise ValueError('Must be a valid email address.')
+        return address
+
+    #VALIDATE PASSWORD# 
 
 
 ################COMPLETED PROMPTS################
@@ -88,6 +119,12 @@ class CompletedPrompt(db.Model, SerializerMixin):
     # -one journal prompt has many completed prompts; many completed prompts are a journal prompt
     journal_prompt = db.relationship("JournalPrompt", back_populates="completed_prompt")
 
+    #SERIALIZE RULES
+    serialize_rules = (
+        "-nudge_prompt.completed_prompt",
+        "-journal_prompt.completed_prompt",
+    )
+
     #VALIDATION
 
 
@@ -107,6 +144,13 @@ class NudgePrompt(db.Model, SerializerMixin):
     completed_prompt = db.relationship("CompletedPrompt", back_populates="nudge_prompt")
     # -one nudge has many prompts; many nudge prompts belong to one nudge
     action_type = db.relationship("Nudge", back_populates = "nudge_prompts")
+
+    #SERIALIZE RULES
+    serialize_rules = (
+        "-completed_prompt.nudge_prompt",
+        "-action_type.nudge_prompts",
+        "-action_type.pillar"
+    )
 
     #VALIDATION
 
@@ -129,6 +173,12 @@ class Nudge(db.Model, SerializerMixin):
     # -one pillar has one nudge; one nudge has one pillar
     pillar = db.relationship("Pillar", back_populates = "nudge")
 
+    #SERIALIZE RULES
+    serialize_rules = (
+        # "-nudge_prompts.action_type",
+        # "-pillar.nudge"
+    )
+
     #VALIDATION
 
 
@@ -148,6 +198,13 @@ class JournalPrompt(db.Model, SerializerMixin):
     completed_prompt = db.relationship("CompletedPrompt", back_populates="journal_prompt")
     # -one journal has many prompts; many journal prompts belong to one journal
     action_type = db.relationship("Journal", back_populates = "journal_prompts")
+
+    #SERIALIZE RULES
+    serialize_rules = (
+        "-completed_prompt.journal_prompt",
+        "-action_type.journal_prompts",
+        "-action_type.pillar"
+    )
 
     #VALIDATION
 
@@ -170,6 +227,13 @@ class Journal(db.Model, SerializerMixin):
     # -one pillar has one journal; one journal has one pillar
     pillar = db.relationship("Pillar", back_populates = "journal")
 
+    #SERIALIZE RULES
+    serialize_rules = (
+        "-journal_prompts.action_type",
+        "-pillar.journal",
+        "-journal_prompts.completed_prompt"
+    )
+
     #VALIDATION
 
 
@@ -190,6 +254,12 @@ class Pillar(db.Model, SerializerMixin):
     nudge = db.relationship("Nudge", back_populates = "pillar")
     # -one pillar has one journal; one journal has one pillar
     journal = db.relationship("Journal", back_populates = "pillar")
+
+    #SERIALIZE RULES
+    serialize_rules = (
+        "-nudge.pillar",
+        "-journal.pillar"
+    )
 
 
 ################RECOMMENDATIONS################
