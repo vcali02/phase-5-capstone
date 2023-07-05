@@ -21,18 +21,18 @@ https://www.figma.com/file/hRXCinhvPWBrCFlWpTpQmO/micelio?type=design&node-id=0-
 ![Screenshot 2023-07-04 at 3 29 51 PM](https://github.com/vcali02/micelio/assets/122405969/cf779568-94f3-476f-9960-d3765034664d)
 
 ### Relationships
--one user has many completed prompts; many prompts are completed by one user
--one user has completed nudges through completed prompts
--^the same for completed journals
+- one user has many completed prompts; many prompts are completed by one user
+- one user has completed nudges through completed prompts
+- ^the same for completed journals
 
--one nudge prompt has many completed prompts; many completed prompts are a nudge prompt
--^the same for journal
+- one nudge prompt has many completed prompts; many completed prompts are a nudge prompt
+- ^the same for journal
 
--one nudge has many prompts; many nudge prompts belong to one nudge
--^ the same for journal
+- one nudge has many prompts; many nudge prompts belong to one nudge
+- ^ the same for journal
 
--one pillar has one nudge; one nudge has one pillar
--^the same for journal
+- one pillar has one nudge; one nudge has one pillar
+- ^the same for journal
 
 
 ## API Routes
