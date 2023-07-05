@@ -13,6 +13,11 @@ from models import db, User, CompletedPrompt, NudgePrompt, Nudge, JournalPrompt,
 #instantiating faker
 fake = Faker()
 
+###NUDGE AND JOURNAL PROMPTS WITH NULL
+#how to separate prompts per pillar
+#journal prompt has journal id which goes to pillars 
+#journal prompts has pillars through journals 
+
 if __name__ == '__main__':
     #a context (the state of the environment where the code is being executed) through which Flask and its extensions are accessible
     with app.app_context():
@@ -24,40 +29,209 @@ if __name__ == '__main__':
         Journal.query.delete()
         CompletedPrompt.query.delete()
         Recommendation.query.delete()
+        Pillar.query.delete()
 
+        db.session.commit()
+    
+        #---------------USERS---------------#
         print("Seeding users...")
-        users = [
-            User(name= "val", email= "val@micelio.com", username= "valicali", image= "none", bio= "I love to grow."),
-            User(name= "winnie", email= "winnie@micelio.com", username= "winnieboo", image= "none", bio= "I'm here for the snacks.")
-        ]
+        users = []
+        for i in range(10):
+            users.append(User(name= fake.name(), email= fake.email(), username= fake.user_name(), image= "none", bio= fake.sentence(10)))
+        
         db.session.add_all(users)
+        #---------------USERS---------------#
 
-        print("Seeding nudge prompts...")
-        nudge_prompts = [
-            NudgePrompt(action_prompt = "Smile at a stranger.", nudges_id=1),
-            NudgePrompt(action_prompt = "Tell someone they look nice today.", nudges_id=2)
+
+
+
+
+        #-----------NUDGE PROMPTS-----------#
+        #PILLAR 1 be impeccable with your word
+        print("Seeding pillar one nudge action prompts...")
+        p1n_action_prompts = [
+            "Correct negative self talk. ex: `I can't do this.` to `This is hard, but I'm still learning.`",
+            "Ask yourself: Is what I'm saying helping me achieve my goal?",
+            "Do one thing that makes you feel cared for today.",
+            "Today's mantra: When I love myself, I express love.",
+            "Ask yourself: Do I agree with the opinion that was shared with me?",
+            "Ask yourself: Will gossip fuel me or hinder me?",
+            "Don't let your mind be fertile ground for negativity.",
+            "Do one thing to make someone feel cared for today.",
+            "Words are magic, find a way to use them to change someone's day for the better.",
+            "Consider the impact of others' words on your mindset and offer someone a genuine compliment."
         ]
-        db.session.add_all(nudge_prompts)
+        
+
+        #PILLAR 2 don't take anything personally 
+        print("Seeding pillar two nudge action prompts...")
+        p2n_action_prompts = [
+            "When someone's words or actions leave you unsteady, ask them: Tell me how you decided that was an okay thing to say/do?",
+            "Reminder: The behavior of others cannot rule you without first giving it permission to do so.",
+            "Reminder: You are no more a one eyed, one horned, flying purple people eater, than you are whatever anyone says you are.",
+            "When someone's words or actions leave you unsteady, ask yourself: What must this person be dealing with that they cannot act with kindness?",
+            "When someone's words or actions leave you unsteady, consider the wounds you have that have been touched by what has been said.",
+            "When someone sends you emotional poison, decide if you'd like to eat it.",
+            "Remind a friend that they too, can choose to deny the poison of others.",
+            "Remind someone that they are allowed to change their mind.",
+            "Tell a friend in distress the power of unsubscribing to other's poison."
+            "Lend an ear to someone in need."
+        ]
+
+
+        #PILLAR 3 don't make assumptions
+        print("Seeding pillar three nudge action prompts...")
+        p3n_action_prompts = [
+            "Communication gives you the power to gain knowledge. Ask questions to better understand someone's perspective.",
+
+
+        ]
+
+
+        #PILLAR 4 always do your best 
+        print("Seeding pillar four nudge action prompts...")
+        p4n_action_prompts = [
+            "something goes here"
+        ]
+
+        #PILLAR 1 be impeccable with your word
+        print("Seeding pillar one nudge prompts...")
+        p1_nudge_prompts = []
+        for i in range(10):
+            one_p1_prompt = rc(p1n_action_prompts)
+            p1_nudge_prompts.append(
+                NudgePrompt(action_prompt=one_p1_prompt, nudges_id=1)
+            )
+        db.session.add_all(p1_nudge_prompts)
+
+        #PILLAR 2 don't take anything personally
+        print("Seeding pillar two nudge prompts...")
+        p2_nudge_prompts = []
+        for i in range(10):
+            one_p2_prompt = rc(p2n_action_prompts)
+            p2_nudge_prompts.append(
+                NudgePrompt(action_prompt=one_p2_prompt, nudges_id=2)
+            )
+        db.session.add_all(p2_nudge_prompts)
+
+        #PILLAR 3 don't make assumptions
+        print("Seeding pillar three nudge prompts...")
+        p3_nudge_prompts = []
+        for i in range(10):
+            one_p3_prompt = rc(p3n_action_prompts)
+            p3_nudge_prompts.append(
+                NudgePrompt(action_prompt=one_p3_prompt, nudges_id=3)
+            )
+        db.session.add_all(p3_nudge_prompts)
+
+        #PILLAR 4 always do your best 
+        print("Seeding pillar four nudge prompts...")
+        p4_nudge_prompts = []
+        for i in range(10):
+            one_p4_prompt = rc(p4n_action_prompts)
+            p4_nudge_prompts.append(
+                NudgePrompt(action_prompt=one_p4_prompt, nudges_id=4)
+            )
+        db.session.add_all(p4_nudge_prompts)
+
+        #-----------NUDGE PROMPTS-----------#
+
+
+
+
+
+        #----------JOURNAL PROMPTS----------#
+        ##PILLAR 1 be impeccable with your word
+        #be impeccable with your word p1_action_prompts
+        #"Consider the  grand destruction and magnificence that is created through speech."
+
+        #PILLAR 2 don't take anything personally
+        #don't take anything personally p2_action_prompts
+        #"Journal about the difference between understanding someone's trauma and subjecting yourself to gaslighting."
+
+
+        #PILLAR 3 don't make assumptions p3_action_prompts
+
+
+        #PILLAR 4 always do your best p4_action_prompts
+
+
 
         print("Seeding journal prompts...")
         journal_prompts = [
             JournalPrompt(action_prompt = "Journal about what life means to you.", journals_id=1),
             JournalPrompt(action_prompt = "Journal about a time that you felt joy.", journals_id=2)
         ]
-        db.session.add_all(journal_prompts)
 
+        # completed_prompts = []
+        # for completed_prompt in completed_prompts:
+        #     one_user = rc(users)
+        #     nudge_prompt = rc(nudge_prompts)
+        #     journal_prompt = rc(journal_prompts)
+        #     completed_prompts.append(
+        #         CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
+        #     )
+
+        # journal_prompts = []
+        # for _ in range(random.randint(10, 25)):
+        #     journal_prompt = JournalPrompt(action_prompt = fake.sentence(10), journals)
+
+        db.session.add_all(journal_prompts)
+        #----------JOURNAL PROMPTS----------#
+
+
+
+
+
+        #--------------NUDGES---------------#
         print("Seeding nudges...")
-        nudges = [
+        # p1_nudges = []
+        # for i in range(1):
+        #     one_p1_nudge = rc(p1_nudge_prompts)
+        #     p1_nudges.append(
+        #         Nudge(image="url_here", action_type=one_p1_nudge, description="Nudges help you...", pillar_id=1)
+        #     )
+        # db.session.add_all(p1_nudges)
+        p1_nudges = [
             Nudge(image="url_here", action_type="nudge", description="Nudges help you...", pillar_id=1)
         ]
-        db.session.add_all(nudges)
+        db.session.add_all(p1_nudges)
 
+        p2_nudges = [
+            Nudge(image="url_here", action_type="nudge", description="Nudges help you...", pillar_id=2)
+        ]
+        db.session.add_all(p2_nudges)
+
+        p3_nudges = [
+            Nudge(image="url_here", action_type="nudge", description="Nudges help you...", pillar_id=3)
+        ]
+        db.session.add_all(p3_nudges)
+
+        p4_nudges = [
+            Nudge(image="url_here", action_type="nudge", description="Nudges help you...", pillar_id=4)
+        ]
+        db.session.add_all(p4_nudges)
+
+
+        #--------------NUDGES---------------#
+
+
+
+
+
+        #-------------JOURNALS--------------#
         print("Seeding journals...")
         journals = [
             Journal(image="url_here", action_type="journal", description="Journaling is about...", pillar_id=1)
         ]
         db.session.add_all(journals)
+        #-------------JOURNALS--------------#
 
+
+
+
+
+        #--------------PILLARS--------------#
         print("Seeding pillars...")
         pillars = [
             Pillar(image="url_here", pillar_name="be impeccable with your word", description="explain what this means"),
@@ -66,24 +240,75 @@ if __name__ == '__main__':
             Pillar(image="url_here", pillar_name="always do your best", description="explain what this means")
         ]
         db.session.add_all(pillars)
+        #--------------PILLARS--------------#
 
-        print("Seeding completed prompts...")
-        completed_prompts = []
-        for journal_prompt in journal_prompts:
+
+
+
+
+        #---------COMPLETED PROMPTS---------#
+        #PILLAR 1 be impeccable with your word
+        print("Seeding pillar one completed prompts...")
+        p1_completed_prompts = []
+        for i in range(20):
             one_user = rc(users)
-            nudge_prompt = rc(nudge_prompts)
+            nudge_prompt = rc(p1_nudge_prompts)
             journal_prompt = rc(journal_prompts)
-            completed_prompts.append(
+            p1_completed_prompts.append(
                 CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
             )
-        db.session.add_all(completed_prompts)
+        db.session.add_all(p1_completed_prompts)
+        
+        #PILLAR 2 don't take anything personally
+        print("Seeding pillar two completed prompts...")
+        p2_completed_prompts = []
+        for i in range(20):
+            one_user = rc(users)
+            nudge_prompt = rc(p2_nudge_prompts)
+            journal_prompt = rc(journal_prompts)
+            p2_completed_prompts.append(
+                CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
+            )
+        db.session.add_all(p2_completed_prompts)
 
+        #PILLAR 3 don't make assumptions
+        print("Seeding pillar three completed prompts...")
+        p3_completed_prompts = []
+        for i in range(20):
+            one_user = rc(users)
+            nudge_prompt = rc(p3_nudge_prompts)
+            journal_prompt = rc(journal_prompts)
+            p3_completed_prompts.append(
+                CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
+            )
+        db.session.add_all(p3_completed_prompts)
+
+        #PILLAR 4 always do your best
+        print("Seeding pillar four completed prompts...")
+        p4_completed_prompts = []
+        for i in range(20):
+            one_user = rc(users)
+            nudge_prompt = rc(p4_nudge_prompts)
+            journal_prompt = rc(journal_prompts)
+            p4_completed_prompts.append(
+                CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
+            )
+        db.session.add_all(p4_completed_prompts)
+        
+        #---------COMPLETED PROMPTS---------#
+
+
+
+
+
+        #----------RECOMMENDATIONS----------#
         print("seeding recommendations...")
         recommendations = [
             Recommendation(rec_type="book", rec_link = "url_here", image="url_here", blurb="why this is a recommendation for micelio users"),
             Recommendation(rec_type="podcast", rec_link = "url_here", image="url_here", blurb="why this is a recommendation for micelio users")
         ]
         db.session.add_all(recommendations)
+        #----------RECOMMENDATIONS----------#
 
 
         db.session.commit()
