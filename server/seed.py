@@ -62,6 +62,15 @@ if __name__ == '__main__':
             "Consider the impact of others' words on your mindset and offer someone a genuine compliment."
         ]
         
+        #PILLAR 1 be impeccable with your word
+        print("Seeding pillar one nudge prompts...")
+        p1_nudge_prompts = []
+        for i in range(10):
+            one_p1_prompt = rc(p1n_action_prompts)
+            p1_nudge_prompts.append(
+                NudgePrompt(action_prompt=one_p1_prompt, nudges_id=1)
+            )
+        db.session.add_all(p1_nudge_prompts)
 
         #PILLAR 2 don't take anything personally 
         print("Seeding pillar two nudge action prompts...")
@@ -78,32 +87,6 @@ if __name__ == '__main__':
             "Lend an ear to someone in need."
         ]
 
-
-        #PILLAR 3 don't make assumptions
-        print("Seeding pillar three nudge action prompts...")
-        p3n_action_prompts = [
-            "Communication gives you the power to gain knowledge. Ask questions to better understand someone's perspective.",
-
-
-        ]
-
-
-        #PILLAR 4 always do your best 
-        print("Seeding pillar four nudge action prompts...")
-        p4n_action_prompts = [
-            "something goes here"
-        ]
-
-        #PILLAR 1 be impeccable with your word
-        print("Seeding pillar one nudge prompts...")
-        p1_nudge_prompts = []
-        for i in range(10):
-            one_p1_prompt = rc(p1n_action_prompts)
-            p1_nudge_prompts.append(
-                NudgePrompt(action_prompt=one_p1_prompt, nudges_id=1)
-            )
-        db.session.add_all(p1_nudge_prompts)
-
         #PILLAR 2 don't take anything personally
         print("Seeding pillar two nudge prompts...")
         p2_nudge_prompts = []
@@ -115,6 +98,21 @@ if __name__ == '__main__':
         db.session.add_all(p2_nudge_prompts)
 
         #PILLAR 3 don't make assumptions
+        print("Seeding pillar three nudge action prompts...")
+        p3n_action_prompts = [
+            "Communication gives you the power to gain knowledge. Ask questions to better understand someone's perspective.",
+            "While we cannot control others, we can control ourselves. Take a pause before responding to conflict.",
+            "Communicate your needs in your personal relationships. People can't read your mind.",
+            "Communicate your needs in your professional relationships. People can't read your mind.",
+            "Ask someone what they need from you. You cannot read minds.",
+            "Ask yourself how you allow an assumption to ring true, even when it's not, simply to avoid being wrong.",
+            "Have courage, ask questions.",
+            "Pick a person, and see the world through their eyes today.",
+            "Encourage someone to abandon their fear of being themselves by celebrating who they are today.",
+            "Find ways to accept people without wanting to change them."
+        ]
+
+        #PILLAR 3 don't make assumptions
         print("Seeding pillar three nudge prompts...")
         p3_nudge_prompts = []
         for i in range(10):
@@ -123,6 +121,21 @@ if __name__ == '__main__':
                 NudgePrompt(action_prompt=one_p3_prompt, nudges_id=3)
             )
         db.session.add_all(p3_nudge_prompts)
+
+        #PILLAR 4 always do your best 
+        print("Seeding pillar four nudge action prompts...")
+        p4n_action_prompts = [
+            "Check in with yourself: Did you do the best you could given your current state?",
+            "Consider how the state of `success` ebbs and flows based on the available resources of your current state.",
+            "Encourage someone to view the value of their efforts higher than the value of the current outcome.",
+            "Where can you give yourself grace today and congratulate yourself for the growth you have done?"
+            "Where can you give someone grace today and accept someone for where they are?",
+            "Your best is never going to be the same from one moment to the next. How can you use this to empower you?",
+            "Does thinking 'I could have done better' help you accomplish your goals?",
+            "Take action for the sake of it, and don't expect a reward.",
+            "When you don't do your best, you deny yourself the right to be you.",
+            "Shift your perspective on what is 'your best' and you will find yourself more at peace with your growth."
+        ]
 
         #PILLAR 4 always do your best 
         print("Seeding pillar four nudge prompts...")
@@ -141,27 +154,78 @@ if __name__ == '__main__':
 
 
         #----------JOURNAL PROMPTS----------#
-        ##PILLAR 1 be impeccable with your word
-        #be impeccable with your word p1_action_prompts
-        #"Consider the  grand destruction and magnificence that is created through speech."
+        #PILLAR 1 be impeccable with your word
+        print("Seeding pillar one journal action prompts...")
+        p1j_action_prompts = [
+            "Consider the  grand destruction and magnificence that is created through speech.",
+        ]
+        
+        #PILLAR 1 be impeccable with your word
+        print("Seeding pillar one journal prompts...")
+        p1_journal_prompts = []
+        for i in range(10):
+            one_p1_prompt = rc(p1j_action_prompts)
+            p1_journal_prompts.append(
+                JournalPrompt(action_prompt=one_p1_prompt, journals_id=1)
+            )
+        db.session.add_all(p1_journal_prompts)
 
         #PILLAR 2 don't take anything personally
-        #don't take anything personally p2_action_prompts
-        #"Journal about the difference between understanding someone's trauma and subjecting yourself to gaslighting."
-
-
-        #PILLAR 3 don't make assumptions p3_action_prompts
-
-
-        #PILLAR 4 always do your best p4_action_prompts
-
-
-
-        print("Seeding journal prompts...")
-        journal_prompts = [
-            JournalPrompt(action_prompt = "Journal about what life means to you.", journals_id=1),
-            JournalPrompt(action_prompt = "Journal about a time that you felt joy.", journals_id=2)
+        print("Seeding pillar two journal action prompts...")
+        p2j_action_prompts = [
+            "Journal about the difference between understanding someone's trauma and subjecting yourself to gaslighting.",
         ]
+        
+        #PILLAR 2 don't take anything personally
+        print("Seeding pillar two journal prompts...")
+        p2_journal_prompts = []
+        for i in range(10):
+            one_p2_prompt = rc(p2j_action_prompts)
+            p2_journal_prompts.append(
+                JournalPrompt(action_prompt=one_p2_prompt, journals_id=2)
+            )
+        db.session.add_all(p2_journal_prompts)
+
+        #PILLAR 3 don't make assumptions
+        print("Seeding pillar three journal action prompts...")
+        p3j_action_prompts = [
+            "Journal about the difference between understanding someone's trauma and subjecting yourself to gaslighting.",
+        ]
+        
+        #PILLAR 3 don't make assumptions
+        print("Seeding pillar three journal prompts...")
+        p3_journal_prompts = []
+        for i in range(10):
+            one_p3_prompt = rc(p3j_action_prompts)
+            p3_journal_prompts.append(
+                JournalPrompt(action_prompt=one_p3_prompt, journals_id=3)
+            )
+        db.session.add_all(p3_journal_prompts)
+
+
+        #PILLAR 4 always do your best
+        print("Seeding pillar three journal action prompts...")
+        p4j_action_prompts = [
+            "Journal about the difference between understanding someone's trauma and subjecting yourself to gaslighting.",
+        ]
+        
+        #PILLAR 4 always do your best
+        print("Seeding pillar three journal prompts...")
+        p4_journal_prompts = []
+        for i in range(10):
+            one_p4_prompt = rc(p4j_action_prompts)
+            p4_journal_prompts.append(
+                JournalPrompt(action_prompt=one_p4_prompt, journals_id=4)
+            )
+        db.session.add_all(p4_journal_prompts)
+
+
+
+        # print("Seeding journal prompts...")
+        # journal_prompts = [
+        #     JournalPrompt(action_prompt = "Journal about what life means to you.", journals_id=1),
+        #     JournalPrompt(action_prompt = "Journal about a time that you felt joy.", journals_id=2)
+        # ]
 
         # completed_prompts = []
         # for completed_prompt in completed_prompts:
@@ -176,7 +240,7 @@ if __name__ == '__main__':
         # for _ in range(random.randint(10, 25)):
         #     journal_prompt = JournalPrompt(action_prompt = fake.sentence(10), journals)
 
-        db.session.add_all(journal_prompts)
+        # db.session.add_all(journal_prompts)
         #----------JOURNAL PROMPTS----------#
 
 
@@ -253,7 +317,7 @@ if __name__ == '__main__':
         for i in range(20):
             one_user = rc(users)
             nudge_prompt = rc(p1_nudge_prompts)
-            journal_prompt = rc(journal_prompts)
+            journal_prompt = rc(p1_journal_prompts)
             p1_completed_prompts.append(
                 CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
             )
@@ -265,7 +329,7 @@ if __name__ == '__main__':
         for i in range(20):
             one_user = rc(users)
             nudge_prompt = rc(p2_nudge_prompts)
-            journal_prompt = rc(journal_prompts)
+            journal_prompt = rc(p2_journal_prompts)
             p2_completed_prompts.append(
                 CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
             )
@@ -277,7 +341,7 @@ if __name__ == '__main__':
         for i in range(20):
             one_user = rc(users)
             nudge_prompt = rc(p3_nudge_prompts)
-            journal_prompt = rc(journal_prompts)
+            journal_prompt = rc(p3_journal_prompts)
             p3_completed_prompts.append(
                 CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
             )
@@ -289,7 +353,7 @@ if __name__ == '__main__':
         for i in range(20):
             one_user = rc(users)
             nudge_prompt = rc(p4_nudge_prompts)
-            journal_prompt = rc(journal_prompts)
+            journal_prompt = rc(p4_journal_prompts)
             p4_completed_prompts.append(
                 CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
             )
