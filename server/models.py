@@ -6,6 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.ext.hybrid import hybrid_property
+from flask_login import LoginManager
 #import library
 #adds .to_dict() method to model instances
 #allows control over max recursion
@@ -24,23 +26,6 @@ from config import db, bcrypt
 
 #associating MetaData instance with the SQLAlchemy instance to define/manage
 #the structure of the database tables
-
-# Models go here!
-
-# -one user has many completed prompts; many prompts are completed by one user
-# -one user has completed nudges through completed prompts
-# -^the same for completed journals
-
-# -one nudge prompt has many completed prompts; many completed prompts are a nudge prompt
-# ^the same for journal
-
-# -one completed prompt has one pillar; one pillar has many completed prompts !!ACCESSED THROUGH OTHER RELATIONSHIPS
-
-# -one nudge has many prompts; many nudge prompts belong to one nudge
-# -^ the same for journal
-
-# -one pillar has one nudge; one nudge has one pillar
-# -^the same for journal
 
 ################USER################
 class User(db.Model, SerializerMixin):
@@ -72,6 +57,20 @@ class User(db.Model, SerializerMixin):
         #"-completed_prompts.user"
         "-_password_hash",
     )
+
+    #AUTH VALIDATION
+    @hybrid_property
+    def password_hash(self):
+        return self._password_hash
+    
+    @password_hash.setter
+    def password_hash(self, password):
+        password_hash = bcrypt.generate_password_hash(password.encode('utf-8'))
+        self._password_hash = password_hash.decode('utf-8')
+
+    def authenticate(self, password):
+        return bcrypt.check_password_hash(self._password_hash, password.encode('utf-8'))
+
 
     #VALIDATION
     @validates("name")
