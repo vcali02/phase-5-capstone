@@ -35,9 +35,23 @@ if __name__ == '__main__':
     
         #---------------USERS---------------#
         print("Seeding users...")
+        user_images = [
+            "https://static.wixstatic.com/media/7fa9fc_b8ab50165aef4381894173e6b9b61cf7~mv2.jpg/v1/fit/w_241,h_362,q_90/7fa9fc_b8ab50165aef4381894173e6b9b61cf7~mv2.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGyke_NFD7rJOPbpWMXcToWw3l-7x1Vpdaq4cSZg-b-gnQOFbFTBJ9Cn2Bg4fzY48RP18&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXURdXvXDNRGwlQjRXcJFgqVuxVKKtw3w4XQ&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCio6ILKi4nvLmBv7gQz7cHiKxi81WLSvAzpvfsQqqI6lDOeJBVjhK-06sKANwta-AjUw&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3YjghHLn-nKcAx2uggKa0hrWBMxdkifx5kLkAZsNaG4bOW87vD3KZiCrzcdJ-dlf1AVE&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRreaDq9iNCgzN_ppzywb0fKwc9ZEyE2xnpsg&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnPx6e5PsPM7PX4RQHbAzLftgME0teV38unw&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7iWoaZ8ndCK8VLnr-6H7LtKFIU1QvW-XNtA&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd8gBjf2qnfd4SClmjDKo8xPnZwOjYUHAcZw&usqp=CAU",
+            "https://i.pinimg.com/originals/c8/1a/8b/c81a8b6bcee899a76686672e8832863e.jpg"
+        ]
+
         users = []
         for i in range(10):
-            users.append(User(name= fake.name(), email= fake.email(), username= fake.user_name(), image= "none", bio= fake.sentence(10)))
+            user_image = rc(user_images)
+            users.append(User(name= fake.name(), email= fake.email(), username= fake.user_name(), image= user_image, bio= fake.sentence(10)))
         
         db.session.add_all(users)
         #---------------USERS---------------#
@@ -157,7 +171,16 @@ if __name__ == '__main__':
         #PILLAR 1 be impeccable with your word
         print("Seeding pillar one journal action prompts...")
         p1j_action_prompts = [
-            "Consider the  grand destruction and magnificence that is created through speech.",
+            "Journal about the grand destruction and magnificence that is created through speech.",
+            "Journal about this concept: How much you love yourself and how you feel about yourself are directly proportionate to the quality and integrity of your word.",
+            "Journal about the misuse of your word as poison for both yourself and the person you use it against.",
+            "Journal about the imprint people's opinions have on others.",
+            "Journal about what living through love looks like to you.",
+            "Journal about this concept: A sin is anything that you do which goes against yourself. Everything you feel or believe or say that goes against yourself is a sin.",
+            "Journal about manifesting your reality through your word, impeccable or otherwise.",
+            "Journal about a time your point of view was not `true` but simply your point of view.",
+            "Journal about how you use your words to speak to yourself and what, if anything, might you change to uplift the relationship you have with yourself.",
+            "Journal about this concept: You will only receive a negative idea if your mind is fertile ground for that idea."
         ]
         
         #PILLAR 1 be impeccable with your word
@@ -173,7 +196,16 @@ if __name__ == '__main__':
         #PILLAR 2 don't take anything personally
         print("Seeding pillar two journal action prompts...")
         p2j_action_prompts = [
+            "Journal about this concept: You take things personally because a part of you agrees with whatever was said. As soon as you agree, the poison goes through you.",
+            "Journal about this concept: People spew poison at others because they are dealing with their own feelings, beliefs, and opinions, and unable to love accept themselves enough to accept others.",
+            "Journal about a time you took something personally and unravel it by applying the concept that it was never about you.",
+            "Journal about the idea that you love others best when you love yourself first.",
+            "Journal about how deciding to deny the emotional poison someone sends you becoming worse to the sender but not to you.",
+            "Journal about this concept: If you do not take things personally, you are immune to the poison.",
+            "Journal about a time when the agreements in your mind were not compatible, which agreement you chose to listen to, and how it made you feel.",
             "Journal about the difference between understanding someone's trauma and subjecting yourself to gaslighting.",
+            "Journal about where in your life you can apply the concept that you are not responsible for the actions of others and only responsible for yourself. ",
+            "Journal about how your world and your life is simply a movie of your perception of existence."
         ]
         
         #PILLAR 2 don't take anything personally
@@ -189,7 +221,16 @@ if __name__ == '__main__':
         #PILLAR 3 don't make assumptions
         print("Seeding pillar three journal action prompts...")
         p3j_action_prompts = [
-            "Journal about the difference between understanding someone's trauma and subjecting yourself to gaslighting.",
+            "Journal about a time an assumption was made, there were misunderstandings, things were taken personally, and drama ensued for nothing.",
+            "Journal about this concept: Because we are afraid to ask for clarification, we make assumptions, and believe we are right about the assumptions.",
+            "Journal about a time when you made an assumption when you didn't understand something, and when the truth came out, the bubble of your assumption popped and what you found out was not what you thought at all.",
+            "Journal about a time when you made an assumption and stuck to it, not because it was correct, but because it made you feel safe.",
+            "Journal about the idea that we fear being ourselves around others because we thing everyone will judge , victimize, abuse, and blame us as we do ourselves.",
+            "Journal about a time you rejected yourself before anyone else had a chance to.",
+            "Journal about a time your over or underestimated yourself because you didn't take the time to ask yourself questions and answer them.",
+            "Journal about how human problems can be solved through clear communication.",
+            "Journal about the courage it takes to ask questions.",
+            "Journal about a time you found your voice and used it to get something you wanted. How did it benefit you and how can you apply this in other areas of your life?"
         ]
         
         #PILLAR 3 don't make assumptions
@@ -204,13 +245,22 @@ if __name__ == '__main__':
 
 
         #PILLAR 4 always do your best
-        print("Seeding pillar three journal action prompts...")
+        print("Seeding pillar four journal action prompts...")
         p4j_action_prompts = [
-            "Journal about the difference between understanding someone's trauma and subjecting yourself to gaslighting.",
+            "Journal about the ebb and flow of `your best,` as you keep in mind that your best is never the same from one moment to the next.",
+            "Journal about a time you dishonored your present `best` by pushing yourself beyond your present limits and the burnout it likely led you to.",
+            "Journal about a time you dishonored your present `best` by not pushing yourself to meet your present potential and the guilt or shame it may have led to.",
+            "Journal about how honoring `your best` can allow you to give yourself grace, and celebrate your successes.",
+            "Journal about the idea that you do not exist to sacrifice joy or your life. You are here to live and experience happiness and love.",
+            "Journal about this concept: When you do your best you learn to accept yourself.",
+            "Journal about the difference between taking action out of pure desire and without the need for reward, and taking action because you have to.",
+            "Journal about how letting go of the past allows you to enjoy the life you are experiencing now.",
+            "Journal about this concept: When you don't do your best, you deny yourself the right to be you.",
+            "Journal about a time you got knocked down and got back up again. Elaborate and consider how that commitment can be applied to other areas of your life."
         ]
         
         #PILLAR 4 always do your best
-        print("Seeding pillar three journal prompts...")
+        print("Seeding pillar four journal prompts...")
         p4_journal_prompts = []
         for i in range(10):
             one_p4_prompt = rc(p4j_action_prompts)
@@ -257,22 +307,22 @@ if __name__ == '__main__':
         #     )
         # db.session.add_all(p1_nudges)
         p1_nudges = [
-            Nudge(image="url_here", action_type="nudge", description="Nudges help you...", pillar_id=1)
+            Nudge(image="url_here", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=1)
         ]
         db.session.add_all(p1_nudges)
 
         p2_nudges = [
-            Nudge(image="url_here", action_type="nudge", description="Nudges help you...", pillar_id=2)
+            Nudge(image="url_here", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=2)
         ]
         db.session.add_all(p2_nudges)
 
         p3_nudges = [
-            Nudge(image="url_here", action_type="nudge", description="Nudges help you...", pillar_id=3)
+            Nudge(image="url_here", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=3)
         ]
         db.session.add_all(p3_nudges)
 
         p4_nudges = [
-            Nudge(image="url_here", action_type="nudge", description="Nudges help you...", pillar_id=4)
+            Nudge(image="url_here", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=4)
         ]
         db.session.add_all(p4_nudges)
 
@@ -285,10 +335,25 @@ if __name__ == '__main__':
 
         #-------------JOURNALS--------------#
         print("Seeding journals...")
-        journals = [
-            Journal(image="url_here", action_type="journal", description="Journaling is about...", pillar_id=1)
+        p1_journals = [
+            Journal(image="url_here", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=1)
         ]
-        db.session.add_all(journals)
+        db.session.add_all(p1_journals)
+
+        p2_journals = [
+            Journal(image="url_here", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=2)
+        ]
+        db.session.add_all(p2_journals)
+
+        p3_journals = [
+            Journal(image="url_here", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=3)
+        ]
+        db.session.add_all(p3_journals)
+
+        p4_journals = [
+            Journal(image="url_here", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=4)
+        ]
+        db.session.add_all(p4_journals)
         #-------------JOURNALS--------------#
 
 
@@ -298,10 +363,10 @@ if __name__ == '__main__':
         #--------------PILLARS--------------#
         print("Seeding pillars...")
         pillars = [
-            Pillar(image="url_here", pillar_name="be impeccable with your word", description="explain what this means"),
-            Pillar(image="url_here", pillar_name="never make assumptions", description="explain what this means"),
-            Pillar(image="url_here", pillar_name="don't take anything personally", description="explain what this means"),
-            Pillar(image="url_here", pillar_name="always do your best", description="explain what this means")
+            Pillar(image="url_here", pillar_name="Be impeccable with your word.", description="With just the power of your word you can create the most beautiful of dreams, or destroy everything around you."),
+            Pillar(image="url_here", pillar_name="Don't take anything personally.", description="Nothing other people do is because of you. It is because of themselves."),
+            Pillar(image="url_here", pillar_name="Don't make assumptions.", description="You cannot assume that everyone sees the world the way you do."),
+            Pillar(image="url_here", pillar_name="Always do your best.", description="If you always do your best there is no way you can judge yourself.")
         ]
         db.session.add_all(pillars)
         #--------------PILLARS--------------#
@@ -368,8 +433,14 @@ if __name__ == '__main__':
         #----------RECOMMENDATIONS----------#
         print("seeding recommendations...")
         recommendations = [
-            Recommendation(rec_type="book", rec_link = "url_here", image="url_here", blurb="why this is a recommendation for micelio users"),
-            Recommendation(rec_type="podcast", rec_link = "url_here", image="url_here", blurb="why this is a recommendation for micelio users")
+            Recommendation(rec_type="Book: The Four Agreements", 
+            rec_link = "https://www.amazon.com/Four-Agreements-Practical-Personal-Freedom/dp/1878424319/ref=sr_1_1?crid=VN873KBQI7U&keywords=the+four+agreements&qid=1689004212&sprefix=the+four+agreement%2Caps%2C155&sr=8-1", 
+            image="https://m.media-amazon.com/images/I/81hHy5XrdKL._SL1330_.jpg", 
+            blurb="This tiny yet powerful book is the groundwork for growth whether you are building, rebuilding, adding, or remodelling your self."),
+            Recommendation(rec_type="Podcast: The Huberman Lab", 
+            rec_link = "https://open.spotify.com/show/79CkJF3UJTHFV8Dse3Oy0P?si=5018200337e0465c", 
+            image="https://i.scdn.co/image/ab6765630000ba8aaa4830256e4b613f07287208", 
+            blurb="Andrew Huberman uses his expertise in neurobiology and ophthalmology to share science based tools to support people's everyday life. Exploring any episode of his is a life-changing experience.")
         ]
         db.session.add_all(recommendations)
         #----------RECOMMENDATIONS----------#
