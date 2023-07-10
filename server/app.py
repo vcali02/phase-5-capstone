@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from flask_restful import Resource
 from models import User, CompletedPrompt, NudgePrompt, Nudge, JournalPrompt, Journal, Pillar, Recommendation
 # Local imports
-from config import app, db, api
+from config import app, db, api, bcrypt
 #importing LoginManager class
 #contains the code that lets your application and Flask-Login work together
 from flask_login import LoginManager
@@ -45,8 +45,25 @@ def index():
     return '<h1>micelio</h1>'
 
 
+#------------------SIGNUP--------------------#
+class Signup(Resource):
+    def post(self):
+        data = request.get_json()
+        new_user = User(
+            name = data.get('name'),
+            email = data.get('email'),
+            username = data.get('username'),
+            bio = data.get('bio'),
+            image = data.get('image'))
+        new_user.password_hash = data.get('password')
+        db.session.add(new_user)
+        db.session.commit()
+        session['user_id'] = new_user.id
+        return make_response(new_user.to_dict(), 201)
 
+api.add_resource(Signup, '/signup')
 
+#------------------SIGNUP--------------------#
 #-------------------LOGIN--------------------#
 #USER POST
 
