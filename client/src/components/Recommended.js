@@ -45,17 +45,19 @@ function Recommended({rec}) {
 
     
   return (
-    <Grid container ={2}>
-    <Grid item xs={6}>
-        <Paper elevation={6} >
+    // <Grid container ={2}>
+    // <Grid item xs={6}>
+    //     <Paper elevation={6} >
+    <div>
             {/*1. import all the recommendation features*/}
-            <img className="r-img" src={rec.image} alt={rec.rec_type}></img>
-            <li>{rec.rec_link}</li>
-            <li>{rec.rec_type}</li>
+            <img  src={rec.image} alt={rec.rec_type}></img>
+            <p>{rec.rec_link}</p>
+            <p>{rec.rec_type}</p>
             <p>{rec.blurb}</p>
-        </Paper>
-    </Grid>
-    </Grid>
+    </div>
+    //     </Paper>
+    // </Grid>
+    // </Grid>
   )
 }
 

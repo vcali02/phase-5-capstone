@@ -9,6 +9,7 @@ import ActionPrompt from "./ActionPrompt";
 import Growth from "./Growth";
 import RecContainer from "./RecContainer";
 import Nav from "./Nav";
+import Context from "./Context"
 
 import {Button, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
 import AppBar from '@mui/material/AppBar';
@@ -27,7 +28,7 @@ function App() {
   const [pillars, setPillars] = useState([])
 
   //5. user state
-  const [users, setUsers] = useState(null)
+  const [user, setUser] = useState(null)
  
   
 /*------------------STATE--------------------*/
@@ -50,17 +51,55 @@ function App() {
   // {useParams}
   // /pillars/${id}
 
+  //5. fetch auth
+  // useEffect(() => {
+  //   authorizeUser()
+  //   // getFriends()
+  // }, [])
+
+  useEffect((e) => {
+    fetch('http://localhost:5555/authorize_session')
+    .then(res => {
+        if(res.ok){
+          res.json().then(data => {
+            setUser(data)
+          })
+        } else {
+          setUser(null)
+        }
+      })
+    }, [user])  
+    console.log(user)
+
+  // function authorizeUser(){
+  //   // if (user == null) {
+  //     fetch('http://localhost:5555/authorize_session')
+  //     .then(response => {
+  //       if (response.ok) {
+  //         response.json().then((user) => setUser(user))
+  //       } else {
+  //         setUser(null)
+  //       }
+  //     })
+  //   }
+  // }
+
+
 /*-------------------CRUD--------------------*/
 /*------------------CONST--------------------*/
-
+  //2.map through pillars to access a single pillar and pass as props
+  //note, accessing journal and nudge NOW as they are arrays
     const pillars_map = [...pillars].map(el => {
-      return <Pillars key={el.id } pillar={el} />
+      return <Pillars key={el.id } pillar={el} journal={el.journal} nudge={el.nudge}/>
     })
+    //can't console log the props here, but can in pillars component
+    
+  
 /*------------------CONST--------------------*/
 /*----------------FUNCTION-------------------*/
     //5. sign up/log in/log out
-    function updateUser(users) {
-      setUsers(users)
+    function updateUser(user) {
+      setUser(user)
     }
 
 /*----------------FUNCTION-------------------*/
@@ -68,13 +107,11 @@ function App() {
 
 //THINK ABOUT ROUTES AND WHERE THEY TAKE YOU!!!!
   return (
-    <ThemeProvider theme={theme}>  
-    <CssBaseline/>
-      {/* <AppBar> */}
-        <Nav/>
-      {/* </AppBar> */}
-      <Container>
-      {/* <Grid container spacing={5}> */}
+    // <ThemeProvider theme={theme}>  
+    // <CssBaseline/>
+    <Context.Provider value={{user, setUser}}>
+      <div>
+          <Nav updateUser={updateUser}/>
           <Routes>
             <Route path="/auth" element={<Auth updateUser={updateUser}/>} />
             <Route path="/home" element={<Home/>} />
@@ -82,15 +119,16 @@ function App() {
             <Route path="/about" element={<About/>} />
             {/*2. passing pillar state to component*/}
             <Route path="/pillars" element={pillars_map}/>
-            <Route path="/methods" element={<ActionContainer />} />
-            <Route path="/methods" element={<ActionPrompt />} />
+            <Route path="/actions/:pillar_id" element={<ActionContainer/>} />
+            <Route path="/nudges" element={<ActionPrompt />} />
+            <Route path="/journals" element={<ActionPrompt />} />
             <Route path="/growth" element={<Growth/>} />
             {/*1. passing rec state to component*/}
             <Route path="/recommended" element={<RecContainer recs={recs}/>} />
           </Routes> 
-        {/* </Grid> */}
-      </Container>
-    </ThemeProvider>
+      </div>
+    {/* // </ThemeProvider> */}
+    </Context.Provider>
   );
 
 
@@ -120,3 +158,7 @@ export default App;
 <NavLink exact to = "/journal">journal</NavLink>
 
 <NavLink exact to = "/recommended">recommended</NavLink> */}
+
+
+
+//state for nudges and journals to 

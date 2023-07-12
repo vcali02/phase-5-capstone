@@ -1,15 +1,11 @@
 import React from 'react'
 
-function ActionPrompt({nudge_prompt, nudges}) {
-    console.log(nudges)
+function ActionPrompt({prompt}) {
+    console.log(prompt)
   return (
     <div>
-        <button>
-
-        </button>
-        <button>
-
-        </button>
+        <h3>{prompt.action_type}</h3>
+        <p>{prompt.description}</p>
     </div>
   )
 }

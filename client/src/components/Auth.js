@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {useFormik} from "formik";
 import * as yup from "yup";
 import {useNavigate} from "react-router-dom"
@@ -12,10 +12,10 @@ function Auth({updateUser}){
     const toggleSignup = () => setSignup(prev => !prev);
      
     const schema = yup.object().shape({
-        name: yup.string().required("Name is required."),
-        username: yup.string().required("Username is required"),
-        email: yup.string().required("Email is required."),
-        password: yup.string().required("Password is required."),
+        name: yup.string(),
+        username: yup.string(),
+        email: yup.string(),
+        password: yup.string(),
         bio: yup.string(),
         image: yup.string()
     })
@@ -35,12 +35,8 @@ function Auth({updateUser}){
       //yup schema for validation
         validationSchema: schema,
       //submit callback
-      /**fetch(signup ? "/signup" : "/login", {
-                method: "POST",
-                headers: {
-                    "content-type" : "application/json"
-                }, */
         onSubmit: (values, actions) => {
+            console.log("before fetch")
             fetch( signup ? "http://localhost:5555/signup" : "http://localhost:5555/login", {
                 method: "POST",
                 headers: {
@@ -51,7 +47,9 @@ function Auth({updateUser}){
                 if(res.ok){
                     res.json().then(user => {
                         actions.resetForm()
+                        console.log("before update user")
                         updateUser(user)
+                        console.log("after update user")
                         navigate("/home")
                     })
                 } else{
@@ -160,7 +158,7 @@ function Auth({updateUser}){
                  <h3>{formik.errors.password}</h3>
                  ) : ("")}
                 </label>
-                <input type="submit" value="Log In" className="button" />
+                <input type="submit" value="Log In" />
 				{error ? <label style={{ color: "red" }}>{error}</label> : ""}
             </form>
             )}

@@ -6,7 +6,9 @@ import Container from '@mui/material/Container'
 import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.js"
 import App from "../App.css"
 
-function Pillars({pillar}) {
+function Pillars({pillar, journal, nudge}) {
+    console.log(nudge)
+    
 /*------------------STATE--------------------*/
     // //3. nudges state
     // const [nudges, setNudges] = useState([])
@@ -14,7 +16,7 @@ function Pillars({pillar}) {
     // const [journals, setJournals] = useState([])
 
 /*------------------STATE--------------------*/
-    const params = useParams()
+ 
 /*-------------------CRUD--------------------*/
 
 //  //3. nudges fetch
@@ -41,29 +43,35 @@ function Pillars({pillar}) {
     // const journals_link = [...journals].map(el => {
     //     return <ActionContainer key = {el.id} journal={el}/>
     // })
+    
+    //3. mapping through journal and nudge (which have been deconstructed from pillars) to access nested data
+    // const n = [...nudge].map(el => {
+    //     return <ActionContainer key={el.id} n={el}/>
+    // })
+    // console.log(nudge)
 
-
+    // const j = [...journal].map(el => {
+    //     return <ActionContainer key={el.id} j={el} />
+    // })
+    
 /*------------------CONST--------------------*/
 
   return ( 
-    <Container>
-        <Grid container spacing={5}>
-            <Grid item xs={6}>
-                <Paper elevation={6} >
-                    {/* <Typography variant="h5" > */}
-                            <Link to = "/methods">
-                            <img className = "p-img" src= {pillar.image} alt={pillar.pillar_name}></img>
+    <div>
+        
+                            <Link to = {`/actions/${pillar.id}`}>
+                            <img src= {pillar.image} alt={pillar.pillar_name}></img>
                             <Box padding={1}>
                             <h2>{pillar.pillar_name}</h2>
                             <p>{pillar.description}</p>
                             </Box>
                             </Link>
+                            {/* {j} */}
+                            {/* {n} */}
+                            {/* <ActionContainer nudge={nudge} journal={journal}/> */}
                             
-                    {/* </Typography> */}
-                </Paper>
-            </Grid>
-        </Grid>
-    </Container>
+                   
+    </div>
   )
 }
 
@@ -76,3 +84,23 @@ export default Pillars
                             // <Link to = "/journals">
                             //     {journals_link}
                             // </Link>
+
+
+                        //     <Container>
+                        //     <Grid container spacing={5}>
+                        //         <Grid item xs={6}>
+                        //             <Paper elevation={6} >
+                                        
+                        //                         <Link to = "/actions">
+                        //                         <img className = "p-img" src= {pillar.image} alt={pillar.pillar_name}></img>
+                        //                         <Box padding={1}>
+                        //                         <h2>{pillar.pillar_name}</h2>
+                        //                         <p>{pillar.description}</p>
+                        //                         </Box>
+                        //                         </Link>
+                                                
+                        //                         <ActionContainer nudge={nudge} journal={journal}/>
+                                      
+                        //         </Grid>
+                        //     </Grid>
+                        // </Container>

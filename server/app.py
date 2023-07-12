@@ -2,6 +2,7 @@
 
 
 # Remote library imports
+import traceback 
 from flask import make_response, request, session
 from flask_migrate import Migrate
 from flask_restful import Resource
@@ -74,13 +75,25 @@ api.add_resource(Signup, '/signup')
 #-------------------LOGIN--------------------#
 class Login(Resource):
     def post(self):
-        data = request.get_json()
-        user = User.query.filter_by(username = data.get("username")).first()
-        password = request.get_json()["password"]
+        # data = request.get_json()
+        # user = User.query.filter_by(username = data.get("username")).first()
+        # password = request.get_json()["password"]
 
-        if user.authenticate(password):
-            session["user_id"] = user.id
-            return user.to_dict(), 200
+        # if user.authenticate(password):
+        #     session["user_id"] = user.id
+        #     return user.to_dict(), 200
+        try:
+            data = request.get_json()
+            user = User.query.filter_by(username=data.get('username')).first()
+            if user.authenticate(data.get('password')):
+                session['user_id'] = user.id 
+                return make_response(user.to_dict(), 200)
+        # except: 
+        #     raise Unauthorized("invalid credentials")
+        except Exception as e:
+            traceback.print_exc()
+            return {"error": "hi", "message": str(e)}, 500
+        
 
         # try:
         #     data = request.get_json()
@@ -97,14 +110,18 @@ api.add_resource(Login, '/login')
 
 #-------------------LOGIN--------------------#
 #------------------LOGOUT--------------------#
-@app.route("/logout", methods=["POST"])
-@login_required
-def logout():
-    logout_user()
-    return f'You have logged out of micelio.'
+# @app.route("/logout", methods=["POST"])
+# @login_required
+# def logout():
+#     logout_user()
+#     return f'You have logged out of micelio.'
+class Logout(Resource):
+    def get(self):
+        session["user_id"] = None
+        return make_response("You have logged out of micelio", 204)
         
 
-# api.add_resource(Logout, '/logout')
+api.add_resource(Logout, '/logout')
 
 #------------------LOGOUT--------------------#
 #----------------AUTHORIZE-------------------#
@@ -113,8 +130,11 @@ class AuthorizeSession(Resource):
         try:
             user = User.query.filter_by( id = session.get("user_id")).first()
             return make_response(user.to_dict(), 200)
-        except:
-            return make_response({"message" : "Please log in"}, 401)
+        except Exception as e:
+            traceback.print_exc()
+            return {"error": "hi", "message": str(e)}, 500
+        # except:
+        #     return make_response({"message" : "Please log in"}, 401)
 
 
         # if current_user.is_authenticated:

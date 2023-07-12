@@ -6,24 +6,16 @@ import Typography from '@mui/material/Typography'
 
 function Home() {
   return (
-      <Grid container spacing={5}>
-        <Box sx={{
-            display: "flex",
-            alignItems: "center"
-        }}>
+    <div>
         <h1>micelio</h1>
         <img></img>
-        </Box>
-        <Box sx={{
-            display: "flex",
-            alignItems: "center"
-        }}>
-        <img className="h-img"
+        
+        <img
         src="https://www.designboom.com/wp-content/uploads/2021/05/alison-pollack-mushroom-photography-designboom-fb.jpg" 
         alt="micelio">
         </img>
-        </Box>
-    </Grid>
+    </div>
+        
 
   )
 }
