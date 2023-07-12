@@ -1,0 +1,20 @@
+/*pillar images*/
+.p-img {
+    width: 100%;
+    height: 20rem;
+
+}
+
+/*rec images*/
+.r-img {
+    width: 100%;
+    height: 20rem;
+
+}
+
+/*home images*/
+.h-img {
+    width: 210%;
+    height:50rem;
+
+}

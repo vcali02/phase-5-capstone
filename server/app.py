@@ -18,7 +18,7 @@ login_manager.init_app(app)
 #flask login
 #Flask-Login uses sessions for authentication
 #!!!!!MUST SET A SECRET KEY!!!!
-app.secret_key = "6f4f5aa7a1cb8a0aa26bedd6997f14fce66d7d31e4e56d7abc75be4749bd58d5"
+app.secret_key = b'\x99\xbc@p\xfd\x83;\x1e\xda9\xd7\xb2\x82\x90\xdfy'
 
 
 
@@ -61,11 +61,11 @@ class Signup(Resource):
             bio = data['bio'],
             image = data['image'],
         )
-        new_user.password_hash = data['password']
+        new_user.password_hash = data.get('password')
         db.session.add(new_user)
         db.session.commit()
-        # session['user_id'] = new_user.id
-        login_user(new_user, remember=True)
+        session['user_id'] = new_user.id
+        # login_user(new_user, remember=True)
         return make_response(new_user.to_dict(), 201)
 
 api.add_resource(Signup, '/signup')
@@ -74,16 +74,24 @@ api.add_resource(Signup, '/signup')
 #-------------------LOGIN--------------------#
 class Login(Resource):
     def post(self):
-        try:
-            data = request.get_json()
-            user = User.query.filter_by(
-                username = data.get('username')).first()
-            if user.authenticate(data.get('password')):
-                # session['user_id'] = user.id
-                login_user(user, remember=True)
-                return make_response(user.to_dict(), 200)
-        except:
-            return make_response({"401": "Unauthorized"},401)  
+        data = request.get_json()
+        user = User.query.filter_by(username = data.get("username")).first()
+        password = request.get_json()["password"]
+
+        if user.authenticate(password):
+            session["user_id"] = user.id
+            return user.to_dict(), 200
+
+        # try:
+        #     data = request.get_json()
+        #     user = User.query.filter_by(
+        #         username = data.get('username')).first()
+        #     if user.authenticate(data.get('password')):
+        #         # session['user_id'] = user.id
+        #         login_user(user, remember=True)
+        #         return make_response(user.to_dict(), 200)
+        # except:
+        #     return make_response({"401": "Unauthorized"},401)  
             
 api.add_resource(Login, '/login') 
 
@@ -102,10 +110,17 @@ def logout():
 #----------------AUTHORIZE-------------------#
 class AuthorizeSession(Resource):
     def get(self):
-        if current_user.is_authenticated:
-            user = current_user.to_dict()
-            return user, 200
-        return make_response({}, 401)
+        try:
+            user = User.query.filter_by( id = session.get("user_id")).first()
+            return make_response(user.to_dict(), 200)
+        except:
+            return make_response({"message" : "Please log in"}, 401)
+
+
+        # if current_user.is_authenticated:
+        #     user = current_user.to_dict()
+        #     return user, 200
+        # return make_response({}, 401)
         
 
 api.add_resource(AuthorizeSession, '/authorize_session')
@@ -453,22 +468,6 @@ api.add_resource(OneRecommendation, "/recommendations/<int:id>")
 
 
 #-----------------RECOMMENDED----------------#
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
