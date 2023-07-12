@@ -2,15 +2,16 @@
 
 
 # Remote library imports
+import traceback 
 from flask import make_response, request, session
 from flask_migrate import Migrate
 from flask_restful import Resource
 from models import User, CompletedPrompt, NudgePrompt, Nudge, JournalPrompt, Journal, Pillar, Recommendation
 # Local imports
-from config import app, db, api, bcrypt
+from config import app, db, api, bcrypt, CORS
 #importing LoginManager class
 #contains the code that lets your application and Flask-Login work together
-from flask_login import LoginManager
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 #instance
 login_manager = LoginManager()
 #configure the instance for login
@@ -18,7 +19,7 @@ login_manager.init_app(app)
 #flask login
 #Flask-Login uses sessions for authentication
 #!!!!!MUST SET A SECRET KEY!!!!
-app.secret_key = "6f4f5aa7a1cb8a0aa26bedd6997f14fce66d7d31e4e56d7abc75be4749bd58d5"
+app.secret_key = b'\x99\xbc@p\xfd\x83;\x1e\xda9\xd7\xb2\x82\x90\xdfy'
 
 
 
@@ -46,31 +47,105 @@ def index():
 
 
 #------------------SIGNUP--------------------#
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.filter_by(id=user_id).first()
+
+
 class Signup(Resource):
     def post(self):
         data = request.get_json()
         new_user = User(
-            name = data.get('name'),
-            email = data.get('email'),
-            username = data.get('username'),
-            bio = data.get('bio'),
-            image = data.get('image'))
+            name = data['name'],
+            email = data['email'],
+            username = data['username'],
+            bio = data['bio'],
+            image = data['image'],
+        )
         new_user.password_hash = data.get('password')
         db.session.add(new_user)
         db.session.commit()
         session['user_id'] = new_user.id
+        # login_user(new_user, remember=True)
         return make_response(new_user.to_dict(), 201)
 
 api.add_resource(Signup, '/signup')
 
 #------------------SIGNUP--------------------#
 #-------------------LOGIN--------------------#
-#USER POST
+class Login(Resource):
+    def post(self):
+        # data = request.get_json()
+        # user = User.query.filter_by(username = data.get("username")).first()
+        # password = request.get_json()["password"]
 
+        # if user.authenticate(password):
+        #     session["user_id"] = user.id
+        #     return user.to_dict(), 200
+        try:
+            data = request.get_json()
+            user = User.query.filter_by(username=data.get('username')).first()
+            if user.authenticate(data.get('password')):
+                session['user_id'] = user.id 
+                return make_response(user.to_dict(), 200)
+        # except: 
+        #     raise Unauthorized("invalid credentials")
+        except Exception as e:
+            traceback.print_exc()
+            return {"error": "hi", "message": str(e)}, 500
+        
 
-
+        # try:
+        #     data = request.get_json()
+        #     user = User.query.filter_by(
+        #         username = data.get('username')).first()
+        #     if user.authenticate(data.get('password')):
+        #         # session['user_id'] = user.id
+        #         login_user(user, remember=True)
+        #         return make_response(user.to_dict(), 200)
+        # except:
+        #     return make_response({"401": "Unauthorized"},401)  
+            
+api.add_resource(Login, '/login') 
 
 #-------------------LOGIN--------------------#
+#------------------LOGOUT--------------------#
+# @app.route("/logout", methods=["POST"])
+# @login_required
+# def logout():
+#     logout_user()
+#     return f'You have logged out of micelio.'
+class Logout(Resource):
+    def get(self):
+        session["user_id"] = None
+        return make_response("You have logged out of micelio", 204)
+        
+
+api.add_resource(Logout, '/logout')
+
+#------------------LOGOUT--------------------#
+#----------------AUTHORIZE-------------------#
+class AuthorizeSession(Resource):
+    def get(self):
+        try:
+            user = User.query.filter_by( id = session.get("user_id")).first()
+            return make_response(user.to_dict(), 200)
+        except Exception as e:
+            traceback.print_exc()
+            return {"error": "hi", "message": str(e)}, 500
+        # except:
+        #     return make_response({"message" : "Please log in"}, 401)
+
+
+        # if current_user.is_authenticated:
+        #     user = current_user.to_dict()
+        #     return user, 200
+        # return make_response({}, 401)
+        
+
+api.add_resource(AuthorizeSession, '/authorize_session')
+
+#----------------AUTHORIZE-------------------#
 #--------------------USER--------------------#
 #GET /user
 class Users(Resource):
@@ -413,22 +488,6 @@ api.add_resource(OneRecommendation, "/recommendations/<int:id>")
 
 
 #-----------------RECOMMENDED----------------#
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

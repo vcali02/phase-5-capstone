@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="s9jXo4QW0Z18Gfw3uZCw" name="Page-1">
-        <mxGraphModel dx="918" dy="522" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="590" dy="372" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -50,34 +50,34 @@
                 <mxCell id="19" value="PILLARS" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="300" y="120" width="80" height="40" as="geometry"/>
                 </mxCell>
+                <mxCell id="41" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="20" target="21">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <mxCell id="20" value="USER" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="540" y="120" width="80" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="21" value="GROWTH" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="420" y="120" width="80" height="40" as="geometry"/>
+                    <mxGeometry x="540" y="200" width="80" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="37" value="" style="edgeStyle=none;html=1;" parent="1" source="23" target="25" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;NUDGE/JOURNAL CONTAINER&lt;/font&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="270" y="200" width="140" height="40" as="geometry"/>
+                    <mxGeometry x="390" y="120" width="140" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="NUDGE/JOURNAL PROMPT" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="270" y="280" width="140" height="40" as="geometry"/>
+                    <mxGeometry x="390" y="240" width="140" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;RECOMMENDED&lt;/font&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="39" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="27" target="38">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;REC CONTAINER&lt;/font&gt;" style="whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="660" y="120" width="80" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="29" value="" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" target="19" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="379.54181818181826" y="50" as="sourcePoint"/>
                         <mxPoint x="420.450909090909" y="125" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="30" value="" style="edgeStyle=none;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" parent="1" source="2" target="21" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="410" y="60" as="sourcePoint"/>
-                        <mxPoint x="480.910909090909" y="125" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="31" value="" style="edgeStyle=none;html=1;entryX=0.175;entryY=-0.05;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="27" edge="1">
@@ -97,6 +97,9 @@
                         <mxPoint x="360.0018181818182" y="50" as="sourcePoint"/>
                         <mxPoint x="240" y="110" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;RECOMMENDED&lt;/font&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="660" y="200" width="80" height="40" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

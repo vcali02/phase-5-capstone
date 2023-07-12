@@ -363,10 +363,10 @@ if __name__ == '__main__':
         #--------------PILLARS--------------#
         print("Seeding pillars...")
         pillars = [
-            Pillar(image="url_here", pillar_name="Be impeccable with your word.", description="With just the power of your word you can create the most beautiful of dreams, or destroy everything around you."),
-            Pillar(image="url_here", pillar_name="Don't take anything personally.", description="Nothing other people do is because of you. It is because of themselves."),
-            Pillar(image="url_here", pillar_name="Don't make assumptions.", description="You cannot assume that everyone sees the world the way you do."),
-            Pillar(image="url_here", pillar_name="Always do your best.", description="If you always do your best there is no way you can judge yourself.")
+            Pillar(image="https://d3ui957tjb5bqd.cloudfront.net/uploads/2021/05/28113136/7-kH7HDE.jpeg", pillar_name="Be impeccable with your word.", description="With just the power of your word you can create the most beautiful of dreams, or destroy everything around you."),
+            Pillar(image="https://img.freepik.com/premium-photo/modern-collage-art-human-body-tv-head-with-colored-stripes-other-elements-pop-culture-ai-generated_146671-75005.jpg?w=2000", pillar_name="Don't take anything personally.", description="Nothing other people do is because of you. It is because of themselves."),
+            Pillar(image="https://64.media.tumblr.com/65680939eb5c8465e8b149c9ce8796a2/8fe2e0a68b42435a-25/s640x960/1894998d44eb0db4b20e72e72819a8e05db0d5e6.jpg", pillar_name="Don't make assumptions.", description="You cannot assume that everyone sees the world the way you do."),
+            Pillar(image="https://i.pinimg.com/originals/5d/a8/56/5da85636499ca80e4389ad92efa98373.jpg", pillar_name="Always do your best.", description="If you always do your best there is no way you can judge yourself.")
         ]
         db.session.add_all(pillars)
         #--------------PILLARS--------------#
