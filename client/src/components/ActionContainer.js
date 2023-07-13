@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import {Route, Routes, Link, useParams } from "react-router-dom";
 import ActionOptions from './ActionOptions'
 import Pillars from "./Pillars"
+import Context from "./Context"
+
 import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
 import Container from '@mui/material/Container'
 import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.js"
@@ -10,6 +12,7 @@ import App from "../App.css"
 //fetch to /pillar/params.pillar_id
 //METHODS
 function ActionContainer({pillar}) {
+    const {user, setUser} = useContext(Context)
 
     /*------------------STATE--------------------*/
     
@@ -35,7 +38,7 @@ function ActionContainer({pillar}) {
         setNudges(data.nudge)
         setJournals(data.journal)
     })
-    },[])
+    },[user])
 
     /*-------------------CRUD--------------------*/
     /*------------------CONST--------------------*/

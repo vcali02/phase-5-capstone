@@ -32,13 +32,35 @@ function ActionOptions({action}) {
     console.log(prompts)
     // const prompt = Object.values(prompts)
     
-    //iterating through the desired array to access individual prompts
+    // iterating through the desired array to access individual prompts
     const prompt = [...prompts].map((el, i) => {
         return <ActionPrompt key={i} prompt={el}/>
     })
     console.log(prompt)
 
     /*-----------------ITERATE-------------------*/
+
+
+//     //randomizer function
+//     const getRandomPrompt = () => {
+//         return prompts[Math.floor(Math.random() * prompts.length)]
+//     }
+
+//     //randomizer state
+//     const [randomPrompt, setRandomPrompt] = useState("")
+
+//     //avoid infinite loop
+//     useEffect((e) => {
+//         setRandomPrompt(getRandomPrompt())
+//     },[])
+
+//     //handleRandomizer
+//     const handleRandomizer = () => {
+//         const oneRandomPrompt = getRandomPrompt()
+//         setRandomPrompt(oneRandomPrompt)
+//     }
+// // handleRandomizer()
+
 
 
   return (
@@ -52,6 +74,7 @@ function ActionOptions({action}) {
             </div>
         ) : (
             <div onClick={(e) => handleClick(e)}>
+                {/* <ActionPrompt  prompts={prompts}/> */}
                 {/*the single prompt prop passed to child*/}
                 {prompt} 
             </div>

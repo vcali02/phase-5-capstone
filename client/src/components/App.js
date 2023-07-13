@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {Route, Routes, BrowserRouter } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import {Route, Routes, useNavigate, BrowserRouter } from "react-router-dom";
 import Home from "./Home";
 import Auth from "./Auth";
 import About from "./About";
@@ -12,6 +12,7 @@ import Nav from "./Nav";
 import Context from "./Context"
 import Methods from "./Methods"
 import ActionOptions from "./ActionOptions"
+import User from "./User"
 
 import {Button, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
 import AppBar from '@mui/material/AppBar';
@@ -40,50 +41,104 @@ function App() {
  
 /*------------------STATE--------------------*/
 /*-------------------CRUD--------------------*/
-
+useEffect(() => {
+  getRecs()
+  getPillars()
+  authorizeUser()
+  getUser()
+}, [user])
   //1. rec fetch
-  useEffect((e) => {
+  // useEffect((e) => {
+  //   fetch('http://localhost:5555/recommendations')
+  //   .then(res => res.json())
+  //   //1st instruction post rendering js obj:
+  //   //grab state recs then UPDATE the state to BE the recs obj
+  //   .then(recs => setRecs(recs))
+  // }, [])
+  function getRecs(){
     fetch('http://localhost:5555/recommendations')
     .then(res => res.json())
     //1st instruction post rendering js obj:
     //grab state recs then UPDATE the state to BE the recs obj
     .then(recs => setRecs(recs))
-  }, [])
+  }
 
   //2. pillars fetch
-  useEffect((e) => {
+  // useEffect((e) => {
+  //   fetch('http://localhost:5555/pillars')
+  //   .then(res => res.json())
+  //   .then(pillars => setPillars(pillars))
+  // }, [])
+  function getPillars(){
     fetch('http://localhost:5555/pillars')
     .then(res => res.json())
     .then(pillars => setPillars(pillars))
-  }, [])
+  }
 
   //5. login/logout/signup
-  useEffect((e) => {
-    fetch('http://localhost:5555/authorize_session')
-    .then(res => {
-        if(res.ok){
-          res.json().then(data => {
-            setUser(data)
-          })
+  // useEffect((e) => {
+  //   fetch('http://localhost:5555/authorize_session')
+  //   .then(res => {
+  //       if(res.ok){
+  //         res.json().then(data => {
+  //           setUser(data)
+  //         })
+  //       } else {
+  //         setUser(null)
+  //       }
+  //     })
+  //   }, [user])  
+  //   console.log(user)
+  
+
+  function authorizeUser(){
+    if (user == null) {
+      fetch('http://localhost:5555/authorize_session')
+      .then(response => {
+        if (response.ok) {
+          response.json().then((user) => setUser(user))
         } else {
           setUser(null)
         }
       })
-    }, [user])  
-    console.log(user)
+    }
+  }
+
+  // useEffect(() => {
+  //   if (user && user.id) {
+  //     fetch(`http://localhost:5555/users/${user.id}`)
+  //       .then(res => res.json())
+  //       .then(fetchedUser => {
+  //         setUser(fetchedUser);
+  //       });
+  //   }
+  // }, [user]);
+  function getUser(){
+    if (user && user.id) {
+      fetch(`http://localhost:5555/users/${user.id}`)
+        .then(res => res.json())
+        .then(fetchedUser => {
+          setUser(fetchedUser);
+        });
+    }
+  }
+  
+  console.log(user);
+
+
 
   //6. methods page
-  useEffect((e) => {
-      fetch(`http://localhost:5555/nudges`)
-      .then(res => res.json())
-      .then(nudges => setNudges(nudges))
-  },[])
+  // useEffect((e) => {
+  //     fetch(`http://localhost:5555/nudges`)
+  //     .then(res => res.json())
+  //     .then(nudges => setNudges(nudges))
+  // },[])
   
-  useEffect((e) => {
-      fetch("http://localhost:5555/journals")
-      .then(res => res.json())
-      .then(journals => setJournals(journals))
-  },[])  
+  // useEffect((e) => {
+  //     fetch("http://localhost:5555/journals")
+  //     .then(res => res.json())
+  //     .then(journals => setJournals(journals))
+  // },[])  
 
 /*-------------------CRUD--------------------*/
 /*------------------CONST--------------------*/
@@ -110,6 +165,16 @@ function App() {
       setUser(user)
     }
 
+
+    const navigate = useNavigate();
+    function handleLogout() {
+		fetch("http://localhost:5555/logout").then((res) => {
+			if (res.ok){
+				updateUser(null);
+				navigate("/home");
+			}
+		});
+	}
 /*----------------FUNCTION-------------------*/
 
 
@@ -122,6 +187,8 @@ function App() {
           <Nav updateUser={updateUser}/>
           <Routes>
             <Route path="/auth" element={<Auth updateUser={updateUser}/>} />
+            <Route onClick={handleLogout} />
+            <Route path='/users' element={<User setUser={setUser} updateUser={updateUser} user={user} />} />
             <Route path="/home" element={<Home/>} />
             <Route path="/methods" element={<Methods/>} />
             <Route path="/auth" element={<Auth/>} />
@@ -130,7 +197,7 @@ function App() {
             <Route path="/pillars" element={pillars_map}/>
             <Route path="/methods/:pillar_id" element={<ActionContainer/>} />
             <Route path="/methods" element={<ActionOptions />} />
-            <Route path="/journals" element={<ActionPrompt />} />
+    
             <Route path="/growth" element={<Growth/>} />
             {/*1. passing rec state to component*/}
             <Route path="/recommended" element={<RecContainer recs={recs}/>} />
