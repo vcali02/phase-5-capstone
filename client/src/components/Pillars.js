@@ -7,70 +7,14 @@ import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.j
 import App from "../App.css"
 
 function Pillars({pillar, journal, nudge}) {
-    console.log(nudge)
-    
-/*------------------STATE--------------------*/
-    // //3. nudges state
-    // const [nudges, setNudges] = useState([])
-    // //3. journals state
-    // const [journals, setJournals] = useState([])
-
-/*------------------STATE--------------------*/
- 
-/*-------------------CRUD--------------------*/
-
-//  //3. nudges fetch
-//  useEffect((e) => {
-//     fetch('http://localhost:5555/nudges')
-//     .then(res => res.json())
-//     .then(nudges => setNudges(nudges))
-//   }, [])
-
-  //3. journals fetch
-//   useEffect((e) => {
-//     fetch('http://localhost:5555/journals')
-//     .then(res => res.json())
-//     .then(journals => setJournals(journals))
-//   }, [])
-
-// console.log(journals)
-/*-------------------CRUD--------------------*/
-/*------------------CONST--------------------*/
-
-    // const nudges_link = [...nudges].map(el => {
-    //         return <ActionContainer key = {el.id} nudge={el}/>
-    //     })
-    // const journals_link = [...journals].map(el => {
-    //     return <ActionContainer key = {el.id} journal={el}/>
-    // })
-    
-    //3. mapping through journal and nudge (which have been deconstructed from pillars) to access nested data
-    // const n = [...nudge].map(el => {
-    //     return <ActionContainer key={el.id} n={el}/>
-    // })
-    // console.log(nudge)
-
-    // const j = [...journal].map(el => {
-    //     return <ActionContainer key={el.id} j={el} />
-    // })
-    
-/*------------------CONST--------------------*/
 
   return ( 
     <div>
-        
-                            <Link to = {`/actions/${pillar.id}`}>
-                            <img src= {pillar.image} alt={pillar.pillar_name}></img>
-                            <Box padding={1}>
-                            <h2>{pillar.pillar_name}</h2>
-                            <p>{pillar.description}</p>
-                            </Box>
-                            </Link>
-                            {/* {j} */}
-                            {/* {n} */}
-                            {/* <ActionContainer nudge={nudge} journal={journal}/> */}
-                            
-                   
+        <Link to = {`/methods/${pillar.id}`}>
+        <img src= {pillar.image} alt={pillar.pillar_name}></img>
+        <h2>{pillar.pillar_name}</h2>
+        <p>{pillar.description}</p>
+        </Link>
     </div>
   )
 }

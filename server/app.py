@@ -370,7 +370,7 @@ class OneNudge(Resource):
         n = Nudge.query.filter_by(id=id).first()
         if not n:
             return {"error" : "Nudge prompt not found."}, 404
-        n_dict = n.to_dict(only = ("image", "action_type", "description", "pillar_id"))
+        n_dict = n.to_dict(only = ("image", "action_type", "description", "pillar_id", "id"))
         res = make_response(
             n_dict,
             200

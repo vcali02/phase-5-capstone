@@ -28,7 +28,7 @@ function Nav({updateUser, user}) {
                 <NavLink exact to = "/about"> about</NavLink>
                 <NavLink exact to = "/pillars"> pillars </NavLink>
                 <NavLink exact to = "/methods"> methods </NavLink>
-                <NavLink exact to = "/actions"> </NavLink>
+                <NavLink exact to = "/prompts"> </NavLink>
                 <NavLink exact to = "/growth"> growth </NavLink>
                 <NavLink exact to = "/nudges">  </NavLink>
                 <NavLink exact to = "/journals">  </NavLink>
