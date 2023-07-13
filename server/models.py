@@ -174,8 +174,9 @@ class Nudge(db.Model, SerializerMixin):
 
     #SERIALIZE RULES
     serialize_rules = (
-        # "-nudge_prompts.action_type",
-        # "-pillar.nudge"
+        "-nudge_prompts.action_type",
+        "-pillar.nudge",
+        "-nudge_prompts.completed_prompt"
     )
 
     #VALIDATION
@@ -257,7 +258,7 @@ class Pillar(db.Model, SerializerMixin):
     #SERIALIZE RULES
     serialize_rules = (
         "-nudge.pillar",
-        "-journal.pillar"
+        "-journal.pillar",
     )
 
 

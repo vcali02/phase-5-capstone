@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import ActionPrompt from './ActionPrompt'
 import {useParams } from "react-router-dom";
 
-function ActionOptions({action, prompt}) {
+function ActionOptions({action}) {
     
     /*------------------STATE--------------------*/
     //4.prompt state
@@ -10,11 +10,6 @@ function ActionOptions({action, prompt}) {
 
 
     /*------------------STATE--------------------*/
-    /*------------------PARAM--------------------*/
-    
-    
-
-    /*------------------PARAM--------------------*/
     /*-------------------CRUD--------------------*/
 
    
@@ -26,8 +21,22 @@ function ActionOptions({action, prompt}) {
     }
     /*-------------------FUNK--------------------*/
     /*-----------------ITERATE-------------------*/
-
-
+    
+    //allows access to the nested array of action prompts
+    console.log(Object.values(action))
+    let prompt_arr = Object.values(action)
+    console.log(prompt_arr)
+    // console.log(Object.values(prompt_arr))
+    
+    const prompts = Object.values(prompt_arr[4])
+    console.log(prompts)
+    // const prompt = Object.values(prompts)
+    
+    //iterating through the desired array to access individual prompts
+    const prompt = [...prompts].map((el, i) => {
+        return <ActionPrompt key={i} prompt={el}/>
+    })
+    console.log(prompt)
 
     /*-----------------ITERATE-------------------*/
 
@@ -43,7 +52,8 @@ function ActionOptions({action, prompt}) {
             </div>
         ) : (
             <div onClick={(e) => handleClick(e)}>
-                <ActionPrompt action={action}/>
+                {/*the single prompt prop passed to child*/}
+                {prompt} 
             </div>
         )}
     </div>
