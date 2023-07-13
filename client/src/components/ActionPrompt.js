@@ -1,11 +1,11 @@
 import React from 'react'
 
-function ActionPrompt({prompt}) {
-    console.log(prompt)
+function ActionPrompt({action}) {
+    console.log(action)
   return (
     <div>
-        <h3>{prompt.action_type}</h3>
-        <p>{prompt.description}</p>
+        <h3>ActionPrompt</h3>
+        <p>something</p>
     </div>
   )
 }

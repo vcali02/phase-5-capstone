@@ -36,7 +36,6 @@ function Auth({updateUser}){
         validationSchema: schema,
       //submit callback
         onSubmit: (values, actions) => {
-            console.log("before fetch")
             fetch( signup ? "http://localhost:5555/signup" : "http://localhost:5555/login", {
                 method: "POST",
                 headers: {
@@ -47,9 +46,7 @@ function Auth({updateUser}){
                 if(res.ok){
                     res.json().then(user => {
                         actions.resetForm()
-                        console.log("before update user")
                         updateUser(user)
-                        console.log("after update user")
                         navigate("/home")
                     })
                 } else{

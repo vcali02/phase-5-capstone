@@ -10,6 +10,8 @@ import Growth from "./Growth";
 import RecContainer from "./RecContainer";
 import Nav from "./Nav";
 import Context from "./Context"
+import Methods from "./Methods"
+import ActionOptions from "./ActionOptions"
 
 import {Button, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
 import AppBar from '@mui/material/AppBar';
@@ -21,6 +23,7 @@ import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.j
 function App() {
 
 /*------------------STATE--------------------*/
+
   //1. state of recommendations
   const [recs, setRecs] = useState([])
 
@@ -29,10 +32,15 @@ function App() {
 
   //5. user state
   const [user, setUser] = useState(null)
+
+  //6. methods page
+  const [nudges, setNudges] = useState([])
+
+  const [journals, setJournals] = useState([])
  
-  
 /*------------------STATE--------------------*/
 /*-------------------CRUD--------------------*/
+
   //1. rec fetch
   useEffect((e) => {
     fetch('http://localhost:5555/recommendations')
@@ -48,15 +56,8 @@ function App() {
     .then(res => res.json())
     .then(pillars => setPillars(pillars))
   }, [])
-  // {useParams}
-  // /pillars/${id}
 
-  //5. fetch auth
-  // useEffect(() => {
-  //   authorizeUser()
-  //   // getFriends()
-  // }, [])
-
+  //5. login/logout/signup
   useEffect((e) => {
     fetch('http://localhost:5555/authorize_session')
     .then(res => {
@@ -71,32 +72,39 @@ function App() {
     }, [user])  
     console.log(user)
 
-  // function authorizeUser(){
-  //   // if (user == null) {
-  //     fetch('http://localhost:5555/authorize_session')
-  //     .then(response => {
-  //       if (response.ok) {
-  //         response.json().then((user) => setUser(user))
-  //       } else {
-  //         setUser(null)
-  //       }
-  //     })
-  //   }
-  // }
-
+  //6. methods page
+  useEffect((e) => {
+      fetch(`http://localhost:5555/nudges`)
+      .then(res => res.json())
+      .then(nudges => setNudges(nudges))
+  },[])
+  
+  useEffect((e) => {
+      fetch("http://localhost:5555/journals")
+      .then(res => res.json())
+      .then(journals => setJournals(journals))
+  },[])  
 
 /*-------------------CRUD--------------------*/
 /*------------------CONST--------------------*/
+
   //2.map through pillars to access a single pillar and pass as props
   //note, accessing journal and nudge NOW as they are arrays
-    const pillars_map = [...pillars].map(el => {
-      return <Pillars key={el.id } pillar={el} journal={el.journal} nudge={el.nudge}/>
-    })
+  const pillars_map = [...pillars].map(el => {
+    return <Pillars key={el.id } pillar={el} journal={el.journal} nudge={el.nudge}/>
+  })
     //can't console log the props here, but can in pillars component
+    //6. methods page
+  // const nudge = [...nudges].map(el => {
+  //   return <Methods key={el.id} action={el} />
+  // })
+  // const journal = [...journals].map(el => {
+  //   return <Methods key={el.id} action={el} />
+  // })
     
-  
 /*------------------CONST--------------------*/
 /*----------------FUNCTION-------------------*/
+
     //5. sign up/log in/log out
     function updateUser(user) {
       setUser(user)
@@ -115,12 +123,13 @@ function App() {
           <Routes>
             <Route path="/auth" element={<Auth updateUser={updateUser}/>} />
             <Route path="/home" element={<Home/>} />
+            <Route path="/methods" element={<Methods/>} />
             <Route path="/auth" element={<Auth/>} />
             <Route path="/about" element={<About/>} />
             {/*2. passing pillar state to component*/}
             <Route path="/pillars" element={pillars_map}/>
-            <Route path="/actions/:pillar_id" element={<ActionContainer/>} />
-            <Route path="/nudges" element={<ActionPrompt />} />
+            <Route path="/methods/:pillar_id" element={<ActionContainer/>} />
+            <Route path="/methods" element={<ActionOptions />} />
             <Route path="/journals" element={<ActionPrompt />} />
             <Route path="/growth" element={<Growth/>} />
             {/*1. passing rec state to component*/}
@@ -146,6 +155,8 @@ export default App;
 //3. make methods/actions appear on the browser
 //4. make action prompts appear on the browser
 //5. sign up/log in/log out
+//6. methods page
+
 
 {/* <NavLink exact to = "/home">micelio</NavLink>
 <NavLink exact to = "/auth">welcome</NavLink>

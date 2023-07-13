@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Route, Routes, Link, useParams } from "react-router-dom";
-import ActionPrompt from './ActionPrompt'
+import ActionOptions from './ActionOptions'
 import Pillars from "./Pillars"
 import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
 import Container from '@mui/material/Container'
@@ -9,29 +9,23 @@ import App from "../App.css"
 
 //fetch to /pillar/params.pillar_id
 //METHODS
-function ActionContainer() {
+function ActionContainer({pillar}) {
+
+    /*------------------STATE--------------------*/
+    
+    //3. nudge prompt state
+    const [nudges, setNudges] = useState([])
+    //3. journal prompt state
+    const [journals, setJournals] = useState([])
+    
+    /*------------------STATE--------------------*/
+    /*------------------PARAM--------------------*/
+    
     //want to use this wherever we want to access the incoming url parameter
     const params = useParams()
-    console.log(params.pillar_id)
-    /*------------------STATE--------------------*/
-    const [nudges, setNudges] = useState([])
-    const [journals, setJournals] = useState([])
-    //3. nudge prompt state
-    const [nudgePrompts, setNudgePrompts] = useState([])
-    //3. journal prompt state
-    const [journalPrompts, setJournalPrompts] = useState([])
-//    //3. nudges state
-//    const [nudges, setNudges] = useState([])
-//    //3. journals state
-//    const [journals, setJournals] = useState([])
-    //3.
-    const [userSelection, setUserSelection] = useState("")
-   /*------------------STATE--------------------*/
-   /*------------------DECONSTRUCT--------------------*/
-//    const [n_action_type, n_description] = nudge
-//    const [j_action_type, j_description] = journal
-//    console.log(nudge)
+    // console.log(params.pillar_id)
 
+    /*------------------PARAM--------------------*/
     /*-------------------CRUD--------------------*/
 
     useEffect((e) => {
@@ -43,49 +37,19 @@ function ActionContainer() {
     })
     },[])
 
-    // //3. nudges fetch
-    // useEffect((e) => {
-    //     fetch('http://localhost:5555/nudges')
-    //     .then(res => res.json())
-    //     .then(nudges => setNudges(nudges))
-    // }, [])
-
-    // //3. journals fetch
-    // useEffect((e) => {
-    //     fetch('http://localhost:5555/journals')
-    //     .then(res => res.json())
-    //     .then(journals => setJournals(journals))
-    // }, [])
-
-
-    //3. nudge prompts fetch
-    // useEffect((e) => {
-    //     fetch('http://localhost:5555/nudge_prompts')
-    //     .then(res => res.json())
-    //     .then(nudgePrompts => setNudgePrompts(nudgePrompts))
-    // }, [])
-
-    //3. journal prompts fetch
-    // useEffect((e) => {
-    //     fetch('http://localhost:5555/journal_prompts')
-    //     .then(res => res.json())
-    //     .then(journalPrompts => setJournalPrompts(journalPrompts))
-    // }, [])
-
     /*-------------------CRUD--------------------*/
     /*------------------CONST--------------------*/
-    // const nudge_prompts = [...nudgePrompts].map(el => {
-    //     return <ActionPrompt key = {el.id} nudge_prompt={el}/>
-    // })
+   
 
+    //3. mapping through journal and nudge (which have been deconstructed from pillars) to access nested data
+    const n = [...nudges].map(el => {
+        return <ActionOptions key={el.id} action={el} prompt={el.action_prompts}/>
+    })
     const j = [...journals].map(el => {
-        return <ActionPrompt key={el.id} prompt={el} />
+        return <ActionOptions key={el.id} action={el} prompt={el.action_prompts}/>
     })
         
-     //3. mapping through journal and nudge (which have been deconstructed from pillars) to access nested data
-    const n = [...nudges].map(el => {
-        return <ActionPrompt key={el.id} prompt={el}/>
-    })
+   
 
     /*------------------CONST--------------------*/
             
@@ -93,17 +57,11 @@ function ActionContainer() {
     
   return (    
     <div>
+        {/* <Link to = {`/actions/${pillar.id}`}> */}
         <h1>Action Container</h1>
-        {j}
         {n}
-        {/* <p>{n.action_type}</p>
-        <img src={n.image} alt ={n.action_type}></img>
-        <h2>{n.action_type}</h2>
-        <p>{n.description}</p>
-                */}
-        {/* <img src={j.image} alt ={j.action_type}></img>
-        <h2>{j.action_type}</h2>
-        <p>{j.description}</p>  */}
+        {j}
+        {/* </Link> */}
     </div>      
   )
 }
