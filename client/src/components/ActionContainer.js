@@ -23,7 +23,7 @@ function ActionContainer({pillar}) {
     
     //want to use this wherever we want to access the incoming url parameter
     const params = useParams()
-    // console.log(params.pillar_id)
+    console.log(params.pillar_id)
 
     /*------------------PARAM--------------------*/
     /*-------------------CRUD--------------------*/
@@ -43,10 +43,10 @@ function ActionContainer({pillar}) {
 
     //3. mapping through journal and nudge (which have been deconstructed from pillars) to access nested data
     const n = [...nudges].map(el => {
-        return <ActionOptions key={el.id} action={el} prompt={el.action_prompts}/>
+        return <ActionOptions key={el.id} action={el}/>
     })
     const j = [...journals].map(el => {
-        return <ActionOptions key={el.id} action={el} prompt={el.action_prompts}/>
+        return <ActionOptions key={el.id} action={el}/>
     })
         
    
