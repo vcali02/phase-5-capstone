@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import {useFormik} from "formik";
 import * as yup from "yup";
 import {useNavigate} from "react-router-dom"
+import {TextField, Button} from '@mui/material'
 
 
 function Auth({updateUser}){
@@ -60,11 +61,17 @@ function Auth({updateUser}){
 
     return (
        <section>
+        <div>
+            <h1>Welcome!</h1>
+        </div>
             { signup ? (
             <form onSubmit={formik.handleSubmit}>
-            <label> Name:
-            <input 
-            type="text" 
+            {/* <label> Name: */}
+            <TextField
+            variant="outlined"
+            sx={{margin: 3}}
+            placeholder="name"
+            type={"text"} 
             name="name" 
             onChange={formik.handleChange}
             value={formik.values.name}
@@ -73,10 +80,13 @@ function Auth({updateUser}){
             {formik.touched.name && formik.errors.name ? (
             <h3>{formik.errors.name}</h3>
             ) : ("")}
-            </label>
-            <label> Username:
-            <input
-            type="text"
+            {/* </label> */}
+            {/* <label> Username: */}
+            <TextField
+            variant="outlined"
+            sx={{margin: 3}}
+            placeholder="username"
+            type={"text"}
             name="username" 
             onChange={formik.handleChange}
             value={formik.values.username}
@@ -84,10 +94,13 @@ function Auth({updateUser}){
             {formik.touched.username && formik.errors.username ? (
             <h3>{formik.errors.username}</h3>
             ) : ("")}
-            </label>
-            <label> Email:
-            <input 
-            type="text"
+            {/* </label> */}
+            {/* <label> Email: */}
+            <TextField
+            variant="outlined"
+            sx={{margin: 3}}
+            placeholder="email"
+            type={"email"}
             name="email" 
             onChange={formik.handleChange}
             value={formik.values.email}
@@ -95,10 +108,13 @@ function Auth({updateUser}){
             {formik.touched.email && formik.errors.email ? (
             <h3>{formik.errors.email}</h3>
             ) : ("")}
-            </label>
-            <label> Password
-            <input 
-            type="password" 
+            {/* </label> */}
+            {/* <label> Password */}
+            <TextField
+            variant="outlined"
+            sx={{margin: 3}}
+            placeholder="password"
+            type={"password"} 
             name="password" 
             onChange={formik.handleChange}
             value={formik.values.password}
@@ -106,10 +122,13 @@ function Auth({updateUser}){
             {formik.touched.password && formik.errors.password ? (
             <h3>{formik.errors.password}</h3>
             ) : ("")}
-            </label>
-            <label> Bio:
-            <input 
-            type="text" 
+            {/* </label> */}
+            {/* <label> Bio: */}
+            <TextField
+            variant="outlined"
+            sx={{margin: 3}}
+            placeholder="bio"
+            type={"text"} 
             name="bio" 
             onChange={formik.handleChange}
             value={formik.values.bio}
@@ -117,10 +136,13 @@ function Auth({updateUser}){
             {formik.touched.bio && formik.errors.bio ? (
             <h3>{formik.errors.bio}</h3>
             ) : ("")}
-            </label>
-            <label> Image:
-            <input 
-            type="text" 
+            {/* </label> */}
+            {/* <label> Image: */}
+            <TextField
+            variant="outlined"
+            sx={{margin: 3}}
+            placeholder="image"
+            type={"text"} 
             name="image" 
             onChange={formik.handleChange}
             value={formik.values.image}
@@ -128,14 +150,18 @@ function Auth({updateUser}){
             {formik.touched.image && formik.errors.image ? (
             <h3>{formik.errors.image}</h3>
             ) : ("")}
-            </label>
-            <input type="submit" value="Join!" />
+            {/* </label> */}
+            <Button variant="outlined" sx={{margin: 3}} placeholder="Join!" type="submit">Join!</Button>
+            {/* <input type="submit" value="Join!" /> */}
             </form>
             ) : (
             <form onSubmit={formik.handleSubmit}>
-                <label> Username:
-                <input
-                type="text"
+                {/* <label> Username: */}
+                <TextField
+                variant="outlined"
+                sx={{margin: 3}}
+                placeholder="username"
+                type={"text"}
                 name="username" 
                 onChange={formik.handleChange}
                 value={formik.values.username}
@@ -143,10 +169,13 @@ function Auth({updateUser}){
                 {formik.touched.username && formik.errors.username ? (
                 <h3>{formik.errors.username}</h3>
                 ) : ("")}
-                </label>
-                <label> Password
-                <input 
-                 type="password" 
+                {/* </label> */}
+                {/* <label> Password */}
+                    <TextField
+                variant="outlined"
+                sx={{margin: 3}}
+                placeholder="password"
+                type={"password"} 
                  name="password" 
                  onChange={formik.handleChange}
                  value={formik.values.password}
@@ -154,16 +183,17 @@ function Auth({updateUser}){
                 {formik.touched.password && formik.errors.password ? (
                  <h3>{formik.errors.password}</h3>
                  ) : ("")}
-                </label>
-                <input type="submit" value="Log In" />
+                {/* </label> */}
+                {/* <input type="submit" value="Log In" /> */}
+                <Button variant="outlined" sx={{margin: 3}} placeholder="Log In!" type="submit">Log In!</Button>
 				{error ? <label style={{ color: "red" }}>{error}</label> : ""}
             </form>
             )}
             <section>
 				<p>{signup ? "Already have an account?" : "Not a member?"}</p>
-				<button className="button" onClick={toggleSignup}>
+				<Button variant="outlined" sx={{margin: 3}} onClick={toggleSignup}>
 					{signup ? "Login" : "Sign Up"}
-				</button>
+				</Button>
 			</section>
         </section>
     )

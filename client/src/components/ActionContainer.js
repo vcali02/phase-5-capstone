@@ -70,23 +70,3 @@ function ActionContainer({pillar}) {
 }
 
 export default ActionContainer
-
-
-// <Container>
-// <Grid container spacing={5}>
-//     <Grid item xs={6}>
-//         <Paper elevation={6} >
-//             <p>{pillar.journal.action_type}</p>
-//             <img src={nudges.image} alt ={nudges.action_type}></img>
-//             <h2>{nudges.action_type}</h2>
-//             <p>{nudges.description}</p>
-//             {nudge_prompts}
-//         </Paper>
-//         <Paper elevation={6} >
-//             <img src={journals.image} alt ={journals.action_type}></img>
-//             <h2>{journals.action_type}</h2>
-//             <p>{journals.description}</p>
-//         </Paper>
-//     </Grid>
-// </Grid>
-// </Container>

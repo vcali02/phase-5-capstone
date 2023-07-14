@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import ActionContainer from './ActionContainer'
+import {CardActionArea, CardActions } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import {Route, Routes, Link, useParams } from "react-router-dom";
 import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
 import Container from '@mui/material/Container'
@@ -9,42 +12,40 @@ import App from "../App.css"
 function Pillars({pillar, journal, nudge}) {
 
   return ( 
-    <div>
-        <Link to = {`/methods/${pillar.id}`}>
-        <img src= {pillar.image} alt={pillar.pillar_name}></img>
-        <h2>{pillar.pillar_name}</h2>
-        <p>{pillar.description}</p>
+    <Card sx={{ maxWidth: 345, maxHeight: 900, margin: 5 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          image={pillar.image}
+          alt={pillar.pillar_name}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+          {pillar.pillar_name}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+          {pillar.description}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+      <Link to = {`/methods/${pillar.id}`}>
+        <Button sx={{marginLeft: 15}} size="small" color="primary">
+          Explore
+        </Button>
         </Link>
-    </div>
+      </CardActions>
+    </Card>
   )
 }
 
 export default Pillars
-        // <ActionContainer nudges={nudges} journals={journals}/>
-
-                            // <Link to = "/nudges">
-                            //     {nudges_link}
-                            // </Link>
-                            // <Link to = "/journals">
-                            //     {journals_link}
-                            // </Link>
-
-
-                        //     <Container>
-                        //     <Grid container spacing={5}>
-                        //         <Grid item xs={6}>
-                        //             <Paper elevation={6} >
-                                        
-                        //                         <Link to = "/actions">
-                        //                         <img className = "p-img" src= {pillar.image} alt={pillar.pillar_name}></img>
-                        //                         <Box padding={1}>
-                        //                         <h2>{pillar.pillar_name}</h2>
-                        //                         <p>{pillar.description}</p>
-                        //                         </Box>
-                        //                         </Link>
-                                                
-                        //                         <ActionContainer nudge={nudge} journal={journal}/>
-                                      
-                        //         </Grid>
-                        //     </Grid>
-                        // </Container>
+        
+    // <div>
+    //     <Link to = {`/methods/${pillar.id}`}>
+    //     <img src= {pillar.image} alt={pillar.pillar_name}></img>
+    //     <h2>{pillar.pillar_name}</h2>
+    //     <p>{pillar.description}</p>
+    //     </Link>
+    // </div>

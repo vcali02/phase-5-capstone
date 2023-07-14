@@ -1,6 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import ActionPrompt from './ActionPrompt'
 import {useParams } from "react-router-dom";
+import {CardActionArea, CardActions } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
+import Container from '@mui/material/Container'
 
 function ActionOptions({action}) {
     
@@ -65,22 +71,56 @@ function ActionOptions({action}) {
 
   return (
     <div>
-        <h2>ActionOptions</h2>
         {selectPrompt ? (
-            <div onClick={(e) => handleClick(e)}>
-                {/* <img src={action.image}></img> */}
-                <h3>{action.action_type}</h3>
-                <p>{action.description}</p>
-            </div>
-        ) : (
-            <div onClick={(e) => handleClick(e)}>
-                {/* <ActionPrompt  prompts={prompts}/> */}
-                {/*the single prompt prop passed to child*/}
-                {prompt} 
-            </div>
-        )}
+    
+    <Card sx={{ maxWidth: 900, maxHeight: 900, margin: 5 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          image={action.image}
+          alt={action.action_type}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+          {action.action_type}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+          {action.description}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button onClick={(e) => handleClick(e)} sx={{marginLeft: 95}} size="small" color="primary">
+          I pick...you!
+        </Button>
+      </CardActions>
+    </Card>
+     ) : (
+    <Card>
+        <CardContent onClick={(e) => handleClick(e)}>
+            <Typography>{prompt}</Typography>
+        </CardContent>
+    </Card>
+    )}
     </div>
   )
 }
 
 export default ActionOptions
+    // <div>
+    //     <h2>ActionOptions</h2>
+    //     {selectPrompt ? (
+    //         <div onClick={(e) => handleClick(e)}>
+    //             {/* <img src={action.image}></img> */}
+    //             <h3>{action.action_type}</h3>
+    //             <p>{action.description}</p>
+    //         </div>
+    //     ) : (
+    //         <div onClick={(e) => handleClick(e)}>
+    //             {/* <ActionPrompt  prompts={prompts}/> */}
+    //             {/*the single prompt prop passed to child*/}
+    //             {prompt} 
+    //         </div>
+    //     )}
+    // </div>
