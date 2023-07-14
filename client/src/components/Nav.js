@@ -9,6 +9,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+
 function Nav({updateUser, user}) {
     
     // const navigate = useNavigate();

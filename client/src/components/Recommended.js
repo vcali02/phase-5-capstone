@@ -12,52 +12,38 @@ import AddLocationAltOutlinedIcon from '@mui/icons-material/AddLocationAltOutlin
 
 function Recommended({rec}) { 
     
-//     return (
-//         <Card sx={{ maxWidth: 345 }}>
-//         <CardActionArea>
-//         <CardMedia
-//             component="img"
-//             height="140"
-//             image={rec.image} 
-//             alt={rec.rec_type}
-//         />
-//         <CardContent>
-//             <Typography >
-//             {rec.rec_link}
-//             </Typography>
-//             <Typography >
-//             {rec.rec_type}
-//             </Typography>
-//             <Typography >
-//             {rec.blurb}
-//             </Typography>
-//         </CardContent>
-//         </CardActionArea>
-//         <CardActions>
-//         <Button size="medium" color="primary" alt="Mark as hiked">
-//             <HikingIcon/> or <AddLocationAltOutlinedIcon/>
-//         </Button>
-//         </CardActions>
-//     </Card>
-//     );
-// }
-
-
-    
   return (
-    // <Grid container ={2}>
-    // <Grid item xs={6}>
-    //     <Paper elevation={6} >
-    <div>
-            {/*1. import all the recommendation features*/}
-            <img  src={rec.image} alt={rec.rec_type}></img>
-            <p>{rec.rec_link}</p>
-            <p>{rec.rec_type}</p>
-            <p>{rec.blurb}</p>
-    </div>
-    //     </Paper>
-    // </Grid>
-    // </Grid>
+    <Card sx={{ maxWidth: 500, maxHeight: 900, margin: 5}}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          image={rec.image}
+          alt={rec.rec_type}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+          {rec.rec_type}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+          {rec.blurb}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+        {rec.rec_link}
+        </Button>
+      </CardActions>
+    </Card>
+    // <div>
+    //         {/*1. import all the recommendation features*/}
+    //         <img  src={rec.image} alt={rec.rec_type}></img>
+    //         <p>{rec.rec_link}</p>
+    //         <p>{rec.rec_type}</p>
+    //         <p>{rec.blurb}</p>
+    // </div>
+
   )
 }
 
