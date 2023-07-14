@@ -269,28 +269,6 @@ if __name__ == '__main__':
             )
         db.session.add_all(p4_journal_prompts)
 
-
-
-        # print("Seeding journal prompts...")
-        # journal_prompts = [
-        #     JournalPrompt(action_prompt = "Journal about what life means to you.", journals_id=1),
-        #     JournalPrompt(action_prompt = "Journal about a time that you felt joy.", journals_id=2)
-        # ]
-
-        # completed_prompts = []
-        # for completed_prompt in completed_prompts:
-        #     one_user = rc(users)
-        #     nudge_prompt = rc(nudge_prompts)
-        #     journal_prompt = rc(journal_prompts)
-        #     completed_prompts.append(
-        #         CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
-        #     )
-
-        # journal_prompts = []
-        # for _ in range(random.randint(10, 25)):
-        #     journal_prompt = JournalPrompt(action_prompt = fake.sentence(10), journals)
-
-        # db.session.add_all(journal_prompts)
         #----------JOURNAL PROMPTS----------#
 
 
@@ -299,30 +277,24 @@ if __name__ == '__main__':
 
         #--------------NUDGES---------------#
         print("Seeding nudges...")
-        # p1_nudges = []
-        # for i in range(1):
-        #     one_p1_nudge = rc(p1_nudge_prompts)
-        #     p1_nudges.append(
-        #         Nudge(image="url_here", action_type=one_p1_nudge, description="Nudges help you...", pillar_id=1)
-        #     )
-        # db.session.add_all(p1_nudges)
+      
         p1_nudges = [
-            Nudge(image="url_here", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=1)
+            Nudge(image="https://cdn.shopify.com/s/files/1/0552/9252/6748/products/take-a-picture-surreal-collage-art-printm-a-d-s-w-o-r-l-d-s-h-o-pprints-719501.jpg?v=1667715680", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=1)
         ]
         db.session.add_all(p1_nudges)
 
         p2_nudges = [
-            Nudge(image="url_here", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=2)
+            Nudge(image="https://cdn.shopify.com/s/files/1/0552/9252/6748/products/take-a-picture-surreal-collage-art-printm-a-d-s-w-o-r-l-d-s-h-o-pprints-719501.jpg?v=1667715680", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=2)
         ]
         db.session.add_all(p2_nudges)
 
         p3_nudges = [
-            Nudge(image="url_here", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=3)
+            Nudge(image="https://cdn.shopify.com/s/files/1/0552/9252/6748/products/take-a-picture-surreal-collage-art-printm-a-d-s-w-o-r-l-d-s-h-o-pprints-719501.jpg?v=1667715680", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=3)
         ]
         db.session.add_all(p3_nudges)
 
         p4_nudges = [
-            Nudge(image="url_here", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=4)
+            Nudge(image="https://cdn.shopify.com/s/files/1/0552/9252/6748/products/take-a-picture-surreal-collage-art-printm-a-d-s-w-o-r-l-d-s-h-o-pprints-719501.jpg?v=1667715680", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=4)
         ]
         db.session.add_all(p4_nudges)
 
@@ -336,22 +308,22 @@ if __name__ == '__main__':
         #-------------JOURNALS--------------#
         print("Seeding journals...")
         p1_journals = [
-            Journal(image="url_here", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=1)
+            Journal(image="https://i.pinimg.com/originals/9d/d3/44/9dd3446af571b9da8277c15777382bd2.jpg", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=1)
         ]
         db.session.add_all(p1_journals)
 
         p2_journals = [
-            Journal(image="url_here", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=2)
+            Journal(image="https://i.pinimg.com/originals/9d/d3/44/9dd3446af571b9da8277c15777382bd2.jpg", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=2)
         ]
         db.session.add_all(p2_journals)
 
         p3_journals = [
-            Journal(image="url_here", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=3)
+            Journal(image="https://i.pinimg.com/originals/9d/d3/44/9dd3446af571b9da8277c15777382bd2.jpg", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=3)
         ]
         db.session.add_all(p3_journals)
 
         p4_journals = [
-            Journal(image="url_here", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=4)
+            Journal(image="https://i.pinimg.com/originals/9d/d3/44/9dd3446af571b9da8277c15777382bd2.jpg", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=4)
         ]
         db.session.add_all(p4_journals)
         #-------------JOURNALS--------------#
@@ -363,10 +335,10 @@ if __name__ == '__main__':
         #--------------PILLARS--------------#
         print("Seeding pillars...")
         pillars = [
-            Pillar(image="url_here", pillar_name="Be impeccable with your word.", description="With just the power of your word you can create the most beautiful of dreams, or destroy everything around you."),
-            Pillar(image="url_here", pillar_name="Don't take anything personally.", description="Nothing other people do is because of you. It is because of themselves."),
-            Pillar(image="url_here", pillar_name="Don't make assumptions.", description="You cannot assume that everyone sees the world the way you do."),
-            Pillar(image="url_here", pillar_name="Always do your best.", description="If you always do your best there is no way you can judge yourself.")
+            Pillar(image="https://d3ui957tjb5bqd.cloudfront.net/uploads/2021/05/28113136/7-kH7HDE.jpeg", pillar_name="Be impeccable with your word.", description="With just the power of your word you can create the most beautiful of dreams, or destroy everything around you."),
+            Pillar(image="https://img.freepik.com/premium-photo/modern-collage-art-human-body-tv-head-with-colored-stripes-other-elements-pop-culture-ai-generated_146671-75005.jpg?w=2000", pillar_name="Don't take anything personally.", description="Nothing other people do is because of you. It is because of themselves."),
+            Pillar(image="https://64.media.tumblr.com/65680939eb5c8465e8b149c9ce8796a2/8fe2e0a68b42435a-25/s640x960/1894998d44eb0db4b20e72e72819a8e05db0d5e6.jpg", pillar_name="Don't make assumptions.", description="You cannot assume that everyone sees the world the way you do."),
+            Pillar(image="https://i.pinimg.com/originals/5d/a8/56/5da85636499ca80e4389ad92efa98373.jpg", pillar_name="Always do your best.", description="If you always do your best there is no way you can judge yourself.")
         ]
         db.session.add_all(pillars)
         #--------------PILLARS--------------#
