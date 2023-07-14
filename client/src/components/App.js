@@ -190,12 +190,11 @@ useEffect(() => {
             <Route onClick={handleLogout} />
             <Route path='/users' element={<User setUser={setUser} updateUser={updateUser} user={user} />} />
             <Route path="/home" element={<Home/>} />
-            <Route path="/methods" element={<Methods/>} />
-            <Route path="/auth" element={<Auth/>} />
             <Route path="/about" element={<About/>} />
             {/*2. passing pillar state to component*/}
             <Route path="/pillars" element={pillars_map}/>
             <Route path="/methods/:pillar_id" element={<ActionContainer/>} />
+            <Route path="/methods" element={<Methods/>} />
             <Route path="/methods" element={<ActionOptions />} />
     
             <Route path="/growth" element={<Growth/>} />
