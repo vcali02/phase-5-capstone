@@ -453,6 +453,41 @@ api.add_resource(OnePillar, "/pillars/<int:id>")
 
 
 #-------------------PILLAR-------------------#
+#--------------PILLAR PROMPTS----------------#
+
+#Journal prompts by PILLAR ID
+@app.route("/nprompts/<int:id>", methods=["GET"])
+def nprompts(id):
+    nudge_prompts = (
+        NudgePrompt.query.join(
+            Nudge, NudgePrompt.nudges_id == Nudge.id
+        )
+        .join(Pillar, Nudge.pillar_id == Pillar.id)
+        .filter(Pillar.id == id)
+        .all()
+    )
+    np_dict = [n.to_dict(only=("action_prompt",)) for n in nudge_prompts]
+    return make_response(np_dict, 200)
+
+#Journal prompts by PILLAR ID
+@app.route("/jprompts/<int:id>", methods=["GET"])
+def jprompts(id):
+    journal_prompts = (
+            ournalPrompt.query.join(
+            Journal, JournalPrompt.journals_id == Journal.id
+        )
+        .join(Pillar, Journal.pillar_id == Pillar.id)
+        .filter(Pillar.id == id)
+        .all()
+    )
+    jp_dict = [j.to_dict(only=("action_prompt",)) for j in journal_prompts]
+    return make_response(jp_dict, 200)
+
+
+
+
+
+#--------------PILLAR PROMPTS----------------#
 #-----------------RECOMMENDED----------------#
 #GET /recommendations
 class Recommendations(Resource):
