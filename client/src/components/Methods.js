@@ -36,7 +36,7 @@ function Methods() {
 
   return (
     <div>
-    <Card sx={{ maxWidth: 600, maxHeight: 900, margin: 5  }}>
+    <Card sx={{ maxWidth: 900, maxHeight: 900, margin: 5  }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -54,7 +54,7 @@ function Methods() {
         </CardContent>
       </CardActionArea>
     </Card>
-    <Card sx={{ maxWidth: 600, maxHeight: 900, margin: 5 }}>
+    <Card sx={{ maxWidth: 900, maxHeight: 900, margin: 5 }}>
     <CardActionArea>
       <CardMedia
         component="img"

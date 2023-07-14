@@ -73,7 +73,7 @@ function ActionOptions({action}) {
     <div>
         {selectPrompt ? (
     
-    <Card sx={{ maxWidth: 345, maxHeight: 900, margin: 5 }}>
+    <Card sx={{ maxWidth: 900, maxHeight: 900, margin: 5 }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -91,7 +91,7 @@ function ActionOptions({action}) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button onClick={(e) => handleClick(e)} sx={{marginLeft: 14}} size="small" color="primary">
+        <Button onClick={(e) => handleClick(e)} sx={{marginLeft: 95}} size="small" color="primary">
           I pick...you!
         </Button>
       </CardActions>
