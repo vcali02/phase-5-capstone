@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react'
 import {Route, Routes, Link, useParams } from "react-router-dom";
-import ActionOptions from './ActionOptions'
-import Pillars from "./Pillars"
+import JournalAction from './JournalAction'
+import NudgeAction from "./NudgeAction"
 import Context from "./Context"
 
 import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
@@ -46,12 +46,14 @@ function ActionContainer({pillar}) {
 
     //3. mapping through journal and nudge (which have been deconstructed from pillars) to access nested data
     const n = [...nudges].map(el => {
-        return <ActionOptions key={el.id} action={el}/>
+        return <NudgeAction key={el.id} action={el}/>
     })
     const j = [...journals].map(el => {
-        return <ActionOptions key={el.id} action={el}/>
+        return <JournalAction key={el.id} action={el}/>
     })
-        
+    
+    
+    console.log(nudges)
    
 
     /*------------------CONST--------------------*/
