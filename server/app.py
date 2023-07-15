@@ -497,7 +497,7 @@ def nprompts(id):
 @app.route("/jprompts/<int:id>", methods=["GET"])
 def jprompts(id):
     journal_prompts = (
-            ournalPrompt.query.join(
+            JournalPrompt.query.join(
             Journal, JournalPrompt.journals_id == Journal.id
         )
         .join(Pillar, Journal.pillar_id == Pillar.id)

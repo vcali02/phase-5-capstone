@@ -5,13 +5,13 @@ import Auth from "./Auth";
 import About from "./About";
 import Pillars from "./Pillars";
 import ActionContainer from "./ActionContainer";
-import ActionPrompt from "./ActionPrompt";
+import NudgeAction from "./NudgeAction"
 import Growth from "./Growth";
 import RecContainer from "./RecContainer";
 import Nav from "./Nav";
 import Context from "./Context"
 import Methods from "./Methods"
-import ActionOptions from "./ActionOptions"
+import ActionOptions from "./JournalAction"
 import User from "./User"
 
 import {Button, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
@@ -34,10 +34,10 @@ function App() {
   //5. user state
   const [user, setUser] = useState(null)
 
-  //6. methods page
-  const [nudges, setNudges] = useState([])
+  // //6. methods page
+  // const [nudges, setNudges] = useState([])
 
-  const [journals, setJournals] = useState([])
+  // const [journals, setJournals] = useState([])
  
 /*------------------STATE--------------------*/
 /*-------------------CRUD--------------------*/
@@ -74,7 +74,7 @@ useEffect(() => {
     .then(res => res.json())
     .then(pillars => setPillars(pillars))
   }
-
+ console.log(pillars)
   //5. login/logout/signup
   // useEffect((e) => {
   //   fetch('http://localhost:5555/authorize_session')
@@ -194,6 +194,8 @@ useEffect(() => {
             {/*2. passing pillar state to component*/}
             <Route path="/pillars" element={pillars_map}/>
             <Route path="/methods/:pillar_id" element={<ActionContainer/>} />
+            <Route path="/methods/:pillar_id" element={<NudgeAction/>}/>
+            {/* <Route path="/methods/:pillar_id" element={<JournalAction/>}/> */}
             <Route path="/methods" element={<Methods/>} />
             <Route path="/methods" element={<ActionOptions />} />
     
