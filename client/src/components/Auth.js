@@ -65,6 +65,40 @@ function Auth({updateUser}){
             <h1>Welcome!</h1>
         </div>
             { signup ? (
+             <form onSubmit={formik.handleSubmit}>
+             {/* <label> Username: */}
+             <TextField
+             variant="outlined"
+             sx={{margin: 3}}
+             placeholder="username"
+             type={"text"}
+             name="username" 
+             onChange={formik.handleChange}
+             value={formik.values.username}
+             onBlur={formik.handleBlur}/>
+             {formik.touched.username && formik.errors.username ? (
+             <h3>{formik.errors.username}</h3>
+             ) : ("")}
+             {/* </label> */}
+             {/* <label> Password */}
+                 <TextField
+             variant="outlined"
+             sx={{margin: 3}}
+             placeholder="password"
+             type={"password"} 
+              name="password" 
+              onChange={formik.handleChange}
+              value={formik.values.password}
+              onBlur={formik.handleBlur}/>
+             {formik.touched.password && formik.errors.password ? (
+              <h3>{formik.errors.password}</h3>
+              ) : ("")}
+             {/* </label> */}
+             {/* <input type="submit" value="Log In" /> */}
+             <Button variant="outlined" sx={{margin: 3}} placeholder="Log In!" type="submit">Log In!</Button>
+             {error ? <label style={{ color: "red" }}>{error}</label> : ""}
+         </form>
+         ) : (
             <form onSubmit={formik.handleSubmit}>
             {/* <label> Name: */}
             <TextField
@@ -154,45 +188,12 @@ function Auth({updateUser}){
             <Button variant="outlined" sx={{margin: 3}} placeholder="Join!" type="submit">Join!</Button>
             {/* <input type="submit" value="Join!" /> */}
             </form>
-            ) : (
-            <form onSubmit={formik.handleSubmit}>
-                {/* <label> Username: */}
-                <TextField
-                variant="outlined"
-                sx={{margin: 3}}
-                placeholder="username"
-                type={"text"}
-                name="username" 
-                onChange={formik.handleChange}
-                value={formik.values.username}
-                onBlur={formik.handleBlur}/>
-                {formik.touched.username && formik.errors.username ? (
-                <h3>{formik.errors.username}</h3>
-                ) : ("")}
-                {/* </label> */}
-                {/* <label> Password */}
-                    <TextField
-                variant="outlined"
-                sx={{margin: 3}}
-                placeholder="password"
-                type={"password"} 
-                 name="password" 
-                 onChange={formik.handleChange}
-                 value={formik.values.password}
-                 onBlur={formik.handleBlur}/>
-                {formik.touched.password && formik.errors.password ? (
-                 <h3>{formik.errors.password}</h3>
-                 ) : ("")}
-                {/* </label> */}
-                {/* <input type="submit" value="Log In" /> */}
-                <Button variant="outlined" sx={{margin: 3}} placeholder="Log In!" type="submit">Log In!</Button>
-				{error ? <label style={{ color: "red" }}>{error}</label> : ""}
-            </form>
+           
             )}
             <section>
-				<p>{signup ? "Already have an account?" : "Not a member?"}</p>
+				<p>{signup ? "Not a member?" : "Already have an account?"}</p>
 				<Button variant="outlined" sx={{margin: 3}} onClick={toggleSignup}>
-					{signup ? "Login" : "Sign Up"}
+					{signup ? "Sign Up" : "Log In"}
 				</Button>
 			</section>
         </section>

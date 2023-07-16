@@ -59,8 +59,7 @@ function ActionOptions({action}) {
 return (
   <div>
       {selectAction ? (
-  
-  <Card sx={{ maxWidth: 900, maxHeight: 900, margin: 5 }}>
+   <Card sx={{ maxWidth: 900, maxHeight: 900, margin: 5 }}>
     <CardActionArea>
       <CardMedia
         component="img"
@@ -78,14 +77,15 @@ return (
       </CardContent>
     </CardActionArea>
     <CardActions>
-      <Button onClick={(e) => handleClick(e)} sx={{marginLeft: 95}} size="small" color="primary">
+      <Button onClick={(e) => handleClick(e)} sx={{marginLeft: "auto"}} size="small" color="primary">
         I pick...you!
       </Button>
     </CardActions>
   </Card>
    ) : (
   <Card>
-      <CardContent onClick={(e) => handleClick(e)}>
+      <CardContent >
+        <Button onClick={(e) => handleClick(e)}>Back to Method</Button>
           <Typography>{ipickyou.action_prompt}</Typography>
       </CardContent>
   </Card>
@@ -95,19 +95,4 @@ return (
 }
 
 export default ActionOptions
-    // <div>
-    //     <h2>ActionOptions</h2>
-    //     {selectPrompt ? (
-    //         <div onClick={(e) => handleClick(e)}>
-    //             {/* <img src={action.image}></img> */}
-    //             <h3>{action.action_type}</h3>
-    //             <p>{action.description}</p>
-    //         </div>
-    //     ) : (
-    //         <div onClick={(e) => handleClick(e)}>
-    //             {/* <ActionPrompt  prompts={prompts}/> */}
-    //             {/*the single prompt prop passed to child*/}
-    //             {prompt} 
-    //         </div>
-    //     )}
-    // </div>
+  
