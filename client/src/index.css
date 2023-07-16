@@ -3,6 +3,24 @@
   padding: 0px;
   }
 
+  .App-header {
+    background-color: var(--palette-b);
+    height: 230px;
+    background-image: url("/Users/valeria/development/phase-5/micelio/client/public/micelio.png");
+    background-position: 50% 0% ;
+    background-repeat: no-repeat;
+    background-size: 400px;
+    margin-top: 0px;
+  }
+
+  .page{
+    margin-top: 300px;
+  }
+
+  .background {
+    background-color: '#E7CAAC';
+  }
+
 
 /* body {
     margin: 0;
@@ -40,11 +58,14 @@
       background-color: #9f6457;
       color: #fefefe;
     }
+    */
     
     .root {
       background-color: #9f6457;
       color: #fefefe;
     }
+    
+    /*
     
     body {
       background-color: #fefefe;

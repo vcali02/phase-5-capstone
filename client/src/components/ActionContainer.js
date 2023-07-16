@@ -61,12 +61,9 @@ function ActionContainer({pillar}) {
 
     
   return (    
-    <div>
-        {/* <Link to = {`/actions/${pillar.id}`}> */}
-        <h1>Action Container</h1>
+    <div className="page">
         {n}
         {j}
-        {/* </Link> */}
     </div>      
   )
 }

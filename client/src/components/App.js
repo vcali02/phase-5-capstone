@@ -14,7 +14,7 @@ import Methods from "./Methods"
 import ActionOptions from "./JournalAction"
 import User from "./User"
 
-import {Button, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
+import {Button, Paper, Grid, Typography, CssBaseline, ThemeProvider, Box} from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -92,10 +92,15 @@ useEffect(() => {
 
   //2.map through pillars to access a single pillar and pass as props
   //note, accessing journal and nudge NOW as they are arrays
-  const pillars_map = [...pillars].map(el => {
-    return <Pillars key={el.id } pillar={el} journal={el.journal} nudge={el.nudge}/>
-  })
+                        
+                        
+  const pillars_map = [...pillars].map(el => (
+    <Grid item xs={6} >
+        <Pillars key={el.id } pillar={el} journal={el.journal} nudge={el.nudge}/>
+    </Grid>
+  ))
     
+  const pillar_list = <Routes><Route path="/pillars" element={pillars_map}/></Routes>
 /*------------------CONST--------------------*/
 /*----------------FUNCTION-------------------*/
 
@@ -120,7 +125,11 @@ useEffect(() => {
 //THINK ABOUT ROUTES AND WHERE THEY TAKE YOU!!!!
   return (
     
-        <div>
+        <div >
+          <ThemeProvider theme={theme} >
+            <React.Fragment>
+              {/* <CssBaseline /> */}
+            </React.Fragment>
             <Nav updateUser={updateUser}/>
           <Context.Provider value={{user, setUser}}>
             <Routes>
@@ -130,7 +139,15 @@ useEffect(() => {
               <Route path="/home" element={<Home/>} />
               <Route path="/about" element={<About/>} />
               {/*2. passing pillar state to component*/}
-              <Route path="/pillars" element={pillars_map}/>
+              {/* <Route path="/pillars" element={pillars_map}/> */}
+            </Routes>
+            {/* columns={{ xs: 3, sm: 8, md: 8 }} */}
+            <div className="page">
+              <Grid  container spacing={{ xs: 1, md: 2 }} >
+                  {pillar_list}
+              </Grid>
+            </div>
+            <Routes>
               <Route path="/methods/:pillar_id" element={<ActionContainer/>} />
               <Route path="/methods/:pillar_id" element={<NudgeAction/>}/>
               {/* <Route path="/methods/:pillar_id" element={<JournalAction/>}/> */}
@@ -141,6 +158,7 @@ useEffect(() => {
               <Route path="/recommended" element={<RecContainer recs={recs}/>} />
             </Routes> 
           </Context.Provider>
+          </ThemeProvider>
         </div>
     
   );

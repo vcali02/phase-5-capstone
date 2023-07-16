@@ -12,8 +12,8 @@ import App from "../App.css"
 function Pillars({pillar, journal, nudge}) {
 
   return ( 
-   
-        <Card sx={{ maxWidth: 345, maxHeight: 900, margin: 5 }}>
+   <div >
+        <Card sx={{maxWidth: 600, maxHeight: 300, margin: 1}}>
             <CardActionArea>
                 <CardMedia
                 component="img"
@@ -38,6 +38,7 @@ function Pillars({pillar, journal, nudge}) {
                 </Link>
             </CardActions>
         </Card>
+    </div>
           
   )
 }
