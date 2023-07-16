@@ -12,31 +12,33 @@ import App from "../App.css"
 function Pillars({pillar, journal, nudge}) {
 
   return ( 
-    <Card sx={{ maxWidth: 345, maxHeight: 900, margin: 5 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={pillar.image}
-          alt={pillar.pillar_name}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-          {pillar.pillar_name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-          {pillar.description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-      <Link to = {`/methods/${pillar.id}`}>
-        <Button sx={{marginLeft: 15}} size="small" color="primary">
-          Explore
-        </Button>
-        </Link>
-      </CardActions>
-    </Card>
+   
+        <Card sx={{ maxWidth: 345, maxHeight: 900, margin: 5 }}>
+            <CardActionArea>
+                <CardMedia
+                component="img"
+                height="140"
+                image={pillar.image}
+                alt={pillar.pillar_name}
+                />
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                {pillar.pillar_name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                {pillar.description}
+                </Typography>
+                </CardContent>
+            </CardActionArea>
+            <CardActions>
+            <Link to = {`/methods/${pillar.id}`}>
+                <Button sx={{marginLeft: 15}} size="small" color="primary">
+                Explore
+                </Button>
+                </Link>
+            </CardActions>
+        </Card>
+          
   )
 }
 

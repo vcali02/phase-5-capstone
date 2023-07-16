@@ -33,11 +33,6 @@ function App() {
 
   //5. user state
   const [user, setUser] = useState(null)
-
-  // //6. methods page
-  // const [nudges, setNudges] = useState([])
-
-  // const [journals, setJournals] = useState([])
  
 /*------------------STATE--------------------*/
 /*-------------------CRUD--------------------*/
@@ -47,14 +42,8 @@ useEffect(() => {
   authorizeUser()
   getUser()
 }, [user])
+
   //1. rec fetch
-  // useEffect((e) => {
-  //   fetch('http://localhost:5555/recommendations')
-  //   .then(res => res.json())
-  //   //1st instruction post rendering js obj:
-  //   //grab state recs then UPDATE the state to BE the recs obj
-  //   .then(recs => setRecs(recs))
-  // }, [])
   function getRecs(){
     fetch('http://localhost:5555/recommendations')
     .then(res => res.json())
@@ -64,33 +53,14 @@ useEffect(() => {
   }
 
   //2. pillars fetch
-  // useEffect((e) => {
-  //   fetch('http://localhost:5555/pillars')
-  //   .then(res => res.json())
-  //   .then(pillars => setPillars(pillars))
-  // }, [])
   function getPillars(){
     fetch('http://localhost:5555/pillars')
     .then(res => res.json())
     .then(pillars => setPillars(pillars))
   }
  console.log(pillars)
-  //5. login/logout/signup
-  // useEffect((e) => {
-  //   fetch('http://localhost:5555/authorize_session')
-  //   .then(res => {
-  //       if(res.ok){
-  //         res.json().then(data => {
-  //           setUser(data)
-  //         })
-  //       } else {
-  //         setUser(null)
-  //       }
-  //     })
-  //   }, [user])  
-  //   console.log(user)
-  
 
+  //5. login/logout/signup
   function authorizeUser(){
     if (user == null) {
       fetch('http://localhost:5555/authorize_session')
@@ -104,14 +74,6 @@ useEffect(() => {
     }
   }
 
-  // useEffect(() => {
-  //   if (user && user.id) {
-  //     fetch(`http://localhost:5555/users/${user.id}`)
-  //       .then(res => res.json())
-  //       .then(fetchedUser => {
-  //         setUser(fetchedUser);
-  //       });
-  //   }
   // }, [user]);
   function getUser(){
     if (user && user.id) {
@@ -125,21 +87,6 @@ useEffect(() => {
   
   console.log(user);
 
-
-
-  //6. methods page
-  // useEffect((e) => {
-  //     fetch(`http://localhost:5555/nudges`)
-  //     .then(res => res.json())
-  //     .then(nudges => setNudges(nudges))
-  // },[])
-  
-  // useEffect((e) => {
-  //     fetch("http://localhost:5555/journals")
-  //     .then(res => res.json())
-  //     .then(journals => setJournals(journals))
-  // },[])  
-
 /*-------------------CRUD--------------------*/
 /*------------------CONST--------------------*/
 
@@ -148,14 +95,6 @@ useEffect(() => {
   const pillars_map = [...pillars].map(el => {
     return <Pillars key={el.id } pillar={el} journal={el.journal} nudge={el.nudge}/>
   })
-    //can't console log the props here, but can in pillars component
-    //6. methods page
-  // const nudge = [...nudges].map(el => {
-  //   return <Methods key={el.id} action={el} />
-  // })
-  // const journal = [...journals].map(el => {
-  //   return <Methods key={el.id} action={el} />
-  // })
     
 /*------------------CONST--------------------*/
 /*----------------FUNCTION-------------------*/
@@ -180,32 +119,30 @@ useEffect(() => {
 
 //THINK ABOUT ROUTES AND WHERE THEY TAKE YOU!!!!
   return (
-    // <ThemeProvider theme={theme}>  
-    // <CssBaseline/>
-    <Context.Provider value={{user, setUser}}>
-      <div>
-          <Nav updateUser={updateUser}/>
-          <Routes>
-            <Route path="/auth" element={<Auth updateUser={updateUser}/>} />
-            <Route onClick={handleLogout} />
-            <Route path='/users' element={<User setUser={setUser} updateUser={updateUser} user={user} />} />
-            <Route path="/home" element={<Home/>} />
-            <Route path="/about" element={<About/>} />
-            {/*2. passing pillar state to component*/}
-            <Route path="/pillars" element={pillars_map}/>
-            <Route path="/methods/:pillar_id" element={<ActionContainer/>} />
-            <Route path="/methods/:pillar_id" element={<NudgeAction/>}/>
-            {/* <Route path="/methods/:pillar_id" element={<JournalAction/>}/> */}
-            <Route path="/methods" element={<Methods/>} />
-            <Route path="/methods" element={<ActionOptions />} />
     
-            <Route path="/growth" element={<Growth/>} />
-            {/*1. passing rec state to component*/}
-            <Route path="/recommended" element={<RecContainer recs={recs}/>} />
-          </Routes> 
-      </div>
-    {/* // </ThemeProvider> */}
-    </Context.Provider>
+        <div>
+            <Nav updateUser={updateUser}/>
+          <Context.Provider value={{user, setUser}}>
+            <Routes>
+              <Route path="/auth" element={<Auth updateUser={updateUser}/>} />
+              <Route onClick={handleLogout} />
+              <Route path='/users' element={<User setUser={setUser} updateUser={updateUser} user={user} />} />
+              <Route path="/home" element={<Home/>} />
+              <Route path="/about" element={<About/>} />
+              {/*2. passing pillar state to component*/}
+              <Route path="/pillars" element={pillars_map}/>
+              <Route path="/methods/:pillar_id" element={<ActionContainer/>} />
+              <Route path="/methods/:pillar_id" element={<NudgeAction/>}/>
+              {/* <Route path="/methods/:pillar_id" element={<JournalAction/>}/> */}
+              <Route path="/methods" element={<Methods/>} />
+              <Route path="/methods" element={<ActionOptions />} />
+              <Route path="/growth" element={<Growth/>} />
+              {/*1. passing rec state to component*/}
+              <Route path="/recommended" element={<RecContainer recs={recs}/>} />
+            </Routes> 
+          </Context.Provider>
+        </div>
+    
   );
 
 

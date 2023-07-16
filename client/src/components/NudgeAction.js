@@ -78,16 +78,17 @@ function NudgeAction({action}) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button onClick={(e) => handleClick(e)} sx={{marginLeft: 95}} size="small" color="primary">
+        <Button onClick={(e) => handleClick(e)} sx={{marginLeft: "auto"}} size="small" color="primary">
           I pick...you!
         </Button>
       </CardActions>
     </Card>
      ) : (
     <Card>
-        <CardContent onClick={(e) => handleClick(e)}>
-            <Typography>{ipickyou.action_prompt}</Typography>
-        </CardContent>
+        <CardContent >
+        <Button onClick={(e) => handleClick(e)}>Back to Method</Button>
+          <Typography>{ipickyou.action_prompt}</Typography>
+      </CardContent>
     </Card>
     )}
     </div>

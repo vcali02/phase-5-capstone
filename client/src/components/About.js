@@ -21,71 +21,105 @@ function About() {
           <Typography gutterBottom variant="h5" component="div">
           About
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           In a world with over 7 billion people, it is unsurprising the chaos that ensues. With such a massive number in mind, it is overwhelming to fathom a way to tame the masses into peace.
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           Fortunately, humanity has an exceptional teacher in nature. In the depths of despair, mycelium emerges to feed on death to birth life. It advocates for those in need through communication within the earth and effective routing of resources.
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           Mycelium represents life, death, and peace all through its own actions. Humanity may not be able to control the rest of humanity, but we can learn to control ourselves. We can grow in the presence of doom, we can choose peace through our actions. We have the incredible privilege to experience existence through the lense of a human. This is not to be mistaken as "easy," but regarded as an opportunity to experience a spectrum of what it is to be alive. Inherently, this spectrum requires the ability to face death, and if you allow yourself, birth life.
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           Explore your hidden dimensions through Micelio. Discover the power within you to develop yourself into the being you envision yourself to be, and watch your life change as your growth inspires others to do the same.
           </Typography>
-          <Typography gutterBottom variant="h5" component="div">
+
+
+
+          <Typography gutterBottom variant="h5" component="div">  
           Root of Growth
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           Micelio is influenced by the concept that we have four pillars through which we can access our power and peace. These pillars are philosophies of life.
           </Typography>
+
           <Link to = {`/pillars`}>
           <Typography gutterBottom variant="h5" component="div">
           Be Impeccable with Your Word
           </Typography>
+          </Link>
+          
           <Typography variant="body2" color="text.secondary">
           The first pillar is the umbrella for the rest. It is through this pillar that you create the foundation for growth.
           </Typography>
+
+          <Link to = {`/pillars`}>
           <Typography gutterBottom variant="h5" component="div">
           Don't Take Anything Personally
           </Typography>
+          </Link>
+
           <Typography variant="body2" color="text.secondary">
           The second pillar challenges your perspective of the first pillar by putting you in another person's shoes.
           </Typography>
+
+          <Link to = {`/pillars`}>
           <Typography gutterBottom variant="h5" component="div">
           Don't Make Assumptions
           </Typography>
+          </Link>
+
           <Typography variant="body2" color="text.secondary">
           he third pillar encourages you to take courage and gather information and knowledge through asking questions.
           </Typography>
+
+          <Link to = {`/pillars`}>
           <Typography gutterBottom variant="h5" component="div">
           Always Do Your Best
           </Typography>
+          </Link>
+
           <Typography variant="body2" color="text.secondary">
           The fourth pillar gives you permission to accept yourself.
           </Typography>
-          </Link>
+
+
+
           <Typography gutterBottom variant="h5" component="div">
           How it Works
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           Micelio is designed to facilitate growth through the four pillars. To get started, log in to your Micelio account and navigate to the pillars page.
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           Once you arrive, you will see the pillars displayed with individual descriptions. Select a pillar you want to focus on and Micelio will navigate you to the methods through which you can attain your desired growth.
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           You will see the methods associated with the pillar you selected displayed on your page. Here you can pick your preferred method.
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           Upon selecting a method, you will see a suggestion for how to apply this method in your life to progress your growth in the pillar of your selection.
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           Go about your life applying these exercises and watch your life transform through your commitment to yourself!
           </Typography>
+
+
+
           <Typography gutterBottom variant="h5" component="div">
           Recommended
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           Check out our Recommended page for Micelio favorites that can supplement your self exploration and growth alongside Micelio.
           </Typography>
