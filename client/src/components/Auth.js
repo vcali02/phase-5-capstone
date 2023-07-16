@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import {useFormik} from "formik";
 import * as yup from "yup";
 import {useNavigate} from "react-router-dom"
-import {TextField, Button} from '@mui/material'
+import {TextField, Button, Typography} from '@mui/material'
 
 
 function Auth({updateUser}){
@@ -37,7 +37,7 @@ function Auth({updateUser}){
         validationSchema: schema,
       //submit callback
         onSubmit: (values, actions) => {
-            fetch( signup ? "http://localhost:5555/signup" : "http://localhost:5555/login", {
+            fetch( signup ? "http://localhost:5555/login" : "http://localhost:5555/signup", {
                 method: "POST",
                 headers: {
                     "content-type" : "application/json"
@@ -60,10 +60,8 @@ function Auth({updateUser}){
 
 
     return (
-       <section>
-        <div>
-            <h1>Welcome!</h1>
-        </div>
+       <section className="page">
+        
             { signup ? (
              <form onSubmit={formik.handleSubmit}>
              {/* <label> Username: */}
@@ -95,7 +93,7 @@ function Auth({updateUser}){
               ) : ("")}
              {/* </label> */}
              {/* <input type="submit" value="Log In" /> */}
-             <Button variant="outlined" sx={{margin: 3}} placeholder="Log In!" type="submit">Log In!</Button>
+             <Button color="secondary" variant="outlined" sx={{margin: 3}} placeholder="Log In!" type="submit">Log In!</Button>
              {error ? <label style={{ color: "red" }}>{error}</label> : ""}
          </form>
          ) : (
@@ -185,14 +183,14 @@ function Auth({updateUser}){
             <h3>{formik.errors.image}</h3>
             ) : ("")}
             {/* </label> */}
-            <Button variant="outlined" sx={{margin: 3}} placeholder="Join!" type="submit">Join!</Button>
+            <Button color="secondary" variant="outlined" sx={{margin: 3}} placeholder="Join!" type="submit">Join!</Button>
             {/* <input type="submit" value="Join!" /> */}
             </form>
            
             )}
             <section>
-				<p>{signup ? "Not a member?" : "Already have an account?"}</p>
-				<Button variant="outlined" sx={{margin: 3}} onClick={toggleSignup}>
+				<Typography  color="secondary" sx={{marginLeft: "25px"}}>{signup ? "Not a member?" : "Already have an account?"}</Typography>
+				<Button color="secondary" variant="outlined" sx={{margin: 3}} onClick={toggleSignup}>
 					{signup ? "Sign Up" : "Log In"}
 				</Button>
 			</section>

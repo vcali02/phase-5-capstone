@@ -51,28 +51,27 @@ function Nav({updateUser, user}) {
     const recommended = <NavLink exact to = "/recommended"> recommended</NavLink>
 
 
-
-
     return (
     <>
-        <AppBar sx={{background: '#E7CAAC'}}>
-            <Toolbar>
-                
+        <AppBar sx={{background: '#e9cfb4', backgroundSize: "900px"}}  >
+            <Toolbar className="App-header">
+        
             {isMatch? 
             <>
             <IconButton
                     onClick={handleClick}
                     size="small"
-                    sx={{ ml: 2 }}
+                    sx={{ ml: 2}}
                     aria-controls={open ? 'account-menu' : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                 >
-                <Avatar sx={{ width: 32, height: 32, bgcolor: red[300] }}>
+                <Avatar sx={{ width: 43, height: 43, bgcolor: red[300] }}>
                     <SpaIcon/>
                 </Avatar>
                 </IconButton>
                 <Menu
+                    
                     indicatorColor="secondary" 
                     textColor="inherit"
                     id="fade-menu"
@@ -91,7 +90,7 @@ function Nav({updateUser, user}) {
             <DrawerComp micelio={micelio} about={about} pillars={pillars} methods={methods} growth={growth} recommended={recommended}/>
             </>
             :
-                <Grid container>
+                <Grid container sx={{marginLeft: "center"}}>
                 <Grid item xs={2}>
                 <IconButton
                     onClick={handleClick}
@@ -123,7 +122,7 @@ function Nav({updateUser, user}) {
                 </Menu>
                 </Grid>
                 <Grid item xs={10}>
-                <Tabs indicatorColor="secondary" textColor="inherit" value={value} onChange={(e, val)=>setValue(val)}>
+                <Tabs sx={{marginTop: "160px"}} indicatorColor="secondary" textColor="secondary" value={value} onChange={(e, val)=>setValue(val)}>
                     {/* <Tab label={login}/>
                     <Tab label= {logout}/>
                     <Tab label= {profile}/> */}

@@ -47,7 +47,7 @@ function DrawerComp({micelio, about, pillars, methods, growth, recommended}) {
             </ListItemButton>
         </List>
         </Drawer>
-        <IconButton sx={{marginLeft: "auto"}} onClick={()=>setOpen(!open)}>
+        <IconButton sx={{marginTop: "150px", marginLeft: "auto"}} onClick={()=>setOpen(!open)}>
             <ListIcon/>
         </IconButton>
     </div>

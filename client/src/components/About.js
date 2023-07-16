@@ -9,7 +9,8 @@ import Container from '@mui/material/Container'
 
 function About() {
   return (
-    <Card sx={{ maxWidth: 1000 }}>
+    <Container sx={{marginLeft: "auto", marginTop: "auto"}}>
+    <Card sx={{ maxWidth: 1000, marginTop: "250px", marginBottom: "50px" }}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -126,6 +127,7 @@ function About() {
         </CardContent>
       </CardActionArea>
     </Card>
+    </Container>
   )
 }
 

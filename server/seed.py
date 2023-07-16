@@ -279,22 +279,22 @@ if __name__ == '__main__':
         print("Seeding nudges...")
       
         p1_nudges = [
-            Nudge(image="https://cdn.shopify.com/s/files/1/0552/9252/6748/products/take-a-picture-surreal-collage-art-printm-a-d-s-w-o-r-l-d-s-h-o-pprints-719501.jpg?v=1667715680", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=1)
+            Nudge(image="https://assets.artfullywalls.com/works/40944/big-thumb-2022-03-03-ASX_FrfMjM0Vppm8x9nCJC8fffXbJlgU7D89bpyItFC8BVBd6UT-7UpBOwQ2dV-e-oFvhDQGZsc-E1wL.jpg", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=1)
         ]
         db.session.add_all(p1_nudges)
 
         p2_nudges = [
-            Nudge(image="https://cdn.shopify.com/s/files/1/0552/9252/6748/products/take-a-picture-surreal-collage-art-printm-a-d-s-w-o-r-l-d-s-h-o-pprints-719501.jpg?v=1667715680", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=2)
+            Nudge(image="https://assets.artfullywalls.com/works/40944/big-thumb-2022-03-03-ASX_FrfMjM0Vppm8x9nCJC8fffXbJlgU7D89bpyItFC8BVBd6UT-7UpBOwQ2dV-e-oFvhDQGZsc-E1wL.jpg", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=2)
         ]
         db.session.add_all(p2_nudges)
 
         p3_nudges = [
-            Nudge(image="https://cdn.shopify.com/s/files/1/0552/9252/6748/products/take-a-picture-surreal-collage-art-printm-a-d-s-w-o-r-l-d-s-h-o-pprints-719501.jpg?v=1667715680", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=3)
+            Nudge(image="https://assets.artfullywalls.com/works/40944/big-thumb-2022-03-03-ASX_FrfMjM0Vppm8x9nCJC8fffXbJlgU7D89bpyItFC8BVBd6UT-7UpBOwQ2dV-e-oFvhDQGZsc-E1wL.jpg", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=3)
         ]
         db.session.add_all(p3_nudges)
 
         p4_nudges = [
-            Nudge(image="https://cdn.shopify.com/s/files/1/0552/9252/6748/products/take-a-picture-surreal-collage-art-printm-a-d-s-w-o-r-l-d-s-h-o-pprints-719501.jpg?v=1667715680", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=4)
+            Nudge(image="https://assets.artfullywalls.com/works/40944/big-thumb-2022-03-03-ASX_FrfMjM0Vppm8x9nCJC8fffXbJlgU7D89bpyItFC8BVBd6UT-7UpBOwQ2dV-e-oFvhDQGZsc-E1wL.jpg", action_type="nudge", description="A nudge is a thought exercise to challenge you to push your comfort zone and apply the pillars of growth to yourself and those around you.", pillar_id=4)
         ]
         db.session.add_all(p4_nudges)
 
@@ -308,22 +308,22 @@ if __name__ == '__main__':
         #-------------JOURNALS--------------#
         print("Seeding journals...")
         p1_journals = [
-            Journal(image="https://i.pinimg.com/originals/9d/d3/44/9dd3446af571b9da8277c15777382bd2.jpg", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=1)
+            Journal(image="https://d3ui957tjb5bqd.cloudfront.net/uploads/images/5/57/57856.twitter.jpg?fmt=webp&1623045360", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=1)
         ]
         db.session.add_all(p1_journals)
 
         p2_journals = [
-            Journal(image="https://i.pinimg.com/originals/9d/d3/44/9dd3446af571b9da8277c15777382bd2.jpg", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=2)
+            Journal(image="https://d3ui957tjb5bqd.cloudfront.net/uploads/images/5/57/57856.twitter.jpg?fmt=webp&1623045360", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=2)
         ]
         db.session.add_all(p2_journals)
 
         p3_journals = [
-            Journal(image="https://i.pinimg.com/originals/9d/d3/44/9dd3446af571b9da8277c15777382bd2.jpg", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=3)
+            Journal(image="https://d3ui957tjb5bqd.cloudfront.net/uploads/images/5/57/57856.twitter.jpg?fmt=webp&1623045360", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=3)
         ]
         db.session.add_all(p3_journals)
 
         p4_journals = [
-            Journal(image="https://i.pinimg.com/originals/9d/d3/44/9dd3446af571b9da8277c15777382bd2.jpg", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=4)
+            Journal(image="https://d3ui957tjb5bqd.cloudfront.net/uploads/images/5/57/57856.twitter.jpg?fmt=webp&1623045360", action_type="journal", description="Journaling offers two critical components to personal growth. The first, it uses your subconscious mind to develop and process your thoughts on a topic. Second, it allows a point of reference when looking back at your writing to both see how much you have grown, and what your stream of thought is capable of developing. ", pillar_id=4)
         ]
         db.session.add_all(p4_journals)
         #-------------JOURNALS--------------#
@@ -331,14 +331,17 @@ if __name__ == '__main__':
 
 
 
-
+        # fencers https://c8.alamy.com/comp/2FA1X8C/contemporary-art-collage-modern-design-summer-mood-two-fencing-girls-using-flowers-for-fighting-on-white-2FA1X8C.jpg
+        #teal eye hands https://as1.ftcdn.net/v2/jpg/04/30/75/34/1000_F_430753455_X6NC8wh96BleXVBiBQiSAT2M64K8xfBK.jpg
+        # green people 2nd pillar https://www.shutterstock.com/image-photo/group-people-family-flower-bud-260nw-2281726391.jpg
+        #pillar 4 reading https://d3ui957tjb5bqd.cloudfront.net/uploads/images/5/57/57856.twitter.jpg?fmt=webp&1623045360
         #--------------PILLARS--------------#
         print("Seeding pillars...")
         pillars = [
-            Pillar(image="https://d3ui957tjb5bqd.cloudfront.net/uploads/2021/05/28113136/7-kH7HDE.jpeg", pillar_name="Be impeccable with your word.", description="With just the power of your word you can create the most beautiful of dreams, or destroy everything around you."),
-            Pillar(image="https://img.freepik.com/premium-photo/modern-collage-art-human-body-tv-head-with-colored-stripes-other-elements-pop-culture-ai-generated_146671-75005.jpg?w=2000", pillar_name="Don't take anything personally.", description="Nothing other people do is because of you. It is because of themselves."),
-            Pillar(image="https://64.media.tumblr.com/65680939eb5c8465e8b149c9ce8796a2/8fe2e0a68b42435a-25/s640x960/1894998d44eb0db4b20e72e72819a8e05db0d5e6.jpg", pillar_name="Don't make assumptions.", description="You cannot assume that everyone sees the world the way you do."),
-            Pillar(image="https://i.pinimg.com/originals/5d/a8/56/5da85636499ca80e4389ad92efa98373.jpg", pillar_name="Always do your best.", description="If you always do your best there is no way you can judge yourself.")
+            Pillar(image="https://images.squarespace-cdn.com/content/v1/5e69d2c66d9167038ff7d12c/1632982781392-AIT7XGWVWSS0DQQERKZN/IMG_6325.jpg", pillar_name="Be impeccable with your word.", description="With just the power of your word you can create the most beautiful of dreams, or destroy everything around you."),
+            Pillar(image="https://cdn.domestika.org/c_limit,dpr_auto,f_auto,q_auto,w_820/v1556809760/content-items/002/963/681/surrealism-3-original.jpg?1556809760", pillar_name="Don't take anything personally.", description="Nothing other people do is because of you. It is because of themselves."),
+            Pillar(image="https://media.istockphoto.com/id/1201257225/vector/hands-raised-with-eyes-on-palms-watching-mysterious-and-spiritual-horizontal-design.jpg?s=612x612&w=0&k=20&c=gEZWDWCVZHEdWFXGKrmjVy5IS39WLz19bxem5pja-RI=", pillar_name="Don't make assumptions.", description="You cannot assume that everyone sees the world the way you do."),
+            Pillar(image="https://d7hftxdivxxvm.cloudfront.net/?height=800&quality=80&resize_to=fit&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2FQafdH8KJYqyyDDV4i4WBpQ%2Fnormalized.jpg&width=666", pillar_name="Always do your best.", description="If you always do your best there is no way you can judge yourself.")
         ]
         db.session.add_all(pillars)
         #--------------PILLARS--------------#
