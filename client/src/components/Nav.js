@@ -38,10 +38,10 @@ function Nav({updateUser, user}) {
 	// 		}
 	// 	});
 	// }
-    const login = <NavLink exact to="/auth"> log in </NavLink>
-    const logout = <NavLink exact to = "/home"> log out</NavLink>
-    const profile = <NavLink exact to = "/users"> profile </NavLink>
-    const micelio = <NavLink exact to = "/home"> micelio </NavLink>
+    const login = <NavLink exact to="/auth"> LOG IN</NavLink>
+    const logout = <NavLink exact to = "/home"> LOG OUT</NavLink>
+    const profile = <NavLink exact to = "/users"> PROFILE </NavLink>
+    const home = <NavLink exact to = "/home"> home </NavLink>
     const about = <NavLink exact to = "/about"> about</NavLink>
     const pillars = <NavLink exact to = "/pillars"> pillars </NavLink>
     const methods = <NavLink exact to = "/methods"> methods </NavLink>
@@ -87,7 +87,7 @@ function Nav({updateUser, user}) {
                     <MenuItem onClick={handleClose}>{login}</MenuItem>
                     <MenuItem onClick={handleClose}>{logout}</MenuItem>
                 </Menu>
-            <DrawerComp micelio={micelio} about={about} pillars={pillars} methods={methods} growth={growth} recommended={recommended}/>
+            <DrawerComp home={home} about={about} pillars={pillars} methods={methods} growth={growth} recommended={recommended}/>
             </>
             :
                 <Grid container sx={{marginLeft: "center"}}>
@@ -122,11 +122,11 @@ function Nav({updateUser, user}) {
                 </Menu>
                 </Grid>
                 <Grid item xs={10}>
-                <Tabs sx={{marginTop: "160px"}} indicatorColor="secondary" textColor="secondary" value={value} onChange={(e, val)=>setValue(val)}>
+                <Tabs sx={{marginTop: "160px", marginLeft: "center"}} indicatorColor="secondary" textColor="secondary" value={value} onChange={(e, val)=>setValue(val)}>
                     {/* <Tab label={login}/>
                     <Tab label= {logout}/>
                     <Tab label= {profile}/> */}
-                    <Tab label= {micelio}/>
+                    <Tab label= {home}/>
                     <Tab label= {about}/>
                     <Tab label= {pillars}/>
                     <Tab label= {methods}/>
