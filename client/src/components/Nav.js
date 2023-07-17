@@ -41,14 +41,14 @@ function Nav({updateUser, user}) {
     const login = <NavLink exact to="/auth"> LOG IN</NavLink>
     const logout = <NavLink exact to = "/home"> LOG OUT</NavLink>
     const profile = <NavLink exact to = "/users"> PROFILE </NavLink>
-    const home = <NavLink exact to = "/home"> home </NavLink>
-    const about = <NavLink exact to = "/about"> about</NavLink>
-    const pillars = <NavLink exact to = "/pillars"> pillars </NavLink>
-    const methods = <NavLink exact to = "/methods"> methods </NavLink>
+    const home = <NavLink exact to = "/home"> HOME </NavLink>
+    const about = <NavLink exact to = "/about"> ABOUT</NavLink>
+    const pillars = <NavLink exact to = "/pillars"> PILLARS </NavLink>
+    const methods = <NavLink exact to = "/methods"> METHODS </NavLink>
     {/* <NavLink exact to = "/nudges">  </NavLink>
     <NavLink exact to = "/journals">  </NavLink> */}
-    const growth = <NavLink exact to = "/growth"> growth </NavLink>
-    const recommended = <NavLink exact to = "/recommended"> recommended</NavLink>
+    const growth = <NavLink exact to = "/growth"> GROWTH </NavLink>
+    const recommended = <NavLink exact to = "/recommended"> RECOMMENDED</NavLink>
 
 
     return (
@@ -91,7 +91,7 @@ function Nav({updateUser, user}) {
             </>
             :
                 <Grid container sx={{marginLeft: "center"}}>
-                <Grid item xs={2}>
+                <Grid item xs={3}>
                 <IconButton
                     onClick={handleClick}
                     size="small"
@@ -121,7 +121,7 @@ function Nav({updateUser, user}) {
                     <MenuItem onClick={handleClose}>{logout}</MenuItem>
                 </Menu>
                 </Grid>
-                <Grid item xs={10}>
+                <Grid item xs={9}>
                 <Tabs sx={{marginTop: "160px", marginLeft: "center"}} indicatorColor="secondary" textColor="secondary" value={value} onChange={(e, val)=>setValue(val)}>
                     {/* <Tab label={login}/>
                     <Tab label= {logout}/>
