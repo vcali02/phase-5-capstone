@@ -42,7 +42,7 @@ useEffect(() => {
 }, [user])
 
 
-//separate user info and rest. useEffect run based on dependency array. whenever dependency changes, the useeffect runs
+//separate user info and rest. useEffect run based on dependency array. whenever dependency changes, the useEffect runs
 useEffect(() => {
   authorizeUser()
   getUser()

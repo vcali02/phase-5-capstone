@@ -285,6 +285,33 @@ class OneCompletedPrompt(Resource):
 
 api.add_resource(OneCompletedPrompt, "/completed_prompts/<int:id>")
 
+#Completed prompts by USER ID
+@app.route("/completed_by_user/<int:id>", methods=["GET"])
+def completed_by_user(id):
+    completed = (
+        CompletedPrompt.query.join(
+            User, CompletedPrompt.user_id == User.id)
+        .filter(User.id == id)
+        .all()
+    )
+    cp_dict = [cp.to_dict() for cp in completed]
+    return make_response(cp_dict, 200)
+    
+#     @app.route("/jprompts/<int:id>", methods=["GET"])
+# def jprompts(id):
+#     journal_prompts = (
+#             JournalPrompt.query.join(
+#             Journal, JournalPrompt.journals_id == Journal.id
+#         )
+#         .join(Pillar, Journal.pillar_id == Pillar.id)
+#         .filter(Pillar.id == id)
+#         .all()
+#     )
+#     jp_dict = [j.to_dict(only=("action_prompt",)) for j in journal_prompts]
+#     return make_response(jp_dict, 200)
+
+
+
 #--------------COMPLETED PROMPTS-------------#
 #----------------NUDGE PROMPTS---------------#
 #GET /nudge_prompt
