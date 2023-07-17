@@ -66,15 +66,15 @@ function Home() {
 
 const itemData = [
   {
-    img: 'https://d3ui957tjb5bqd.cloudfront.net/uploads/2021/05/28113203/SP1cSEE0.png',
+    img: 'https://i.pinimg.com/originals/1f/56/50/1f5650e0f275785b9b6bde01197a208a.jpg',
     featured: true,
   },
   {
-    img: 'https://petapixel.com/assets/uploads/2020/10/mush5-800x533.jpg'
+    img: 'https://mymodernmet.com/wp/wp-content/uploads/2017/08/nature-medleys-mushrooms-jill-bliss-1.jpg'
     // img: 'https://i.pinimg.com/originals/9d/d3/44/9dd3446af571b9da8277c15777382bd2.jpg',
   },
   {
-    img: 'https://cdn.pixabay.com/photo/2017/09/25/21/13/mushrooms-2786789_1280.jpg'
+    img: 'https://static.boredpanda.com/blog/wp-content/uploads/2017/08/mushrooms-nature-medley-photos-jill-bliss-8-59895e2b8cb8e__700.jpg'
     // img: 'https://as1.ftcdn.net/v2/jpg/05/07/24/00/1000_F_507240001_2VfDNTo5co3ZRZsuYPzd2EsKKQUO9iU0.jpg'
     // img: 'https://media.newyorker.com/photos/609068772f5b0e07ae1843c3/master/w_1600%2Cc_limit/Rosner-Mushrooms-leccium.jpg'
   },
@@ -89,14 +89,14 @@ const itemData = [
     // img: 'https://i.pinimg.com/736x/63/6b/d1/636bd1095b3600436b327c89593691ba.jpg'
   },
   {
-    img: 'https://i.pinimg.com/originals/1f/56/50/1f5650e0f275785b9b6bde01197a208a.jpg',
+    img: 'https://d3ui957tjb5bqd.cloudfront.net/uploads/2021/05/28113203/SP1cSEE0.png',
     featured: true,
   },
   {
-    img: 'https://mymodernmet.com/wp/wp-content/uploads/2017/08/nature-medleys-mushrooms-jill-bliss-1.jpg'
+    img: 'https://petapixel.com/assets/uploads/2020/10/mush5-800x533.jpg'
   },
   {
-    img: 'https://static.boredpanda.com/blog/wp-content/uploads/2017/08/mushrooms-nature-medley-photos-jill-bliss-8-59895e2b8cb8e__700.jpg'
+    img: 'https://cdn.pixabay.com/photo/2017/09/25/21/13/mushrooms-2786789_1280.jpg'
   },
   {
     img: 'https://www.thephotoargus.com/wp-content/uploads/2019/01/fungi12.jpg',

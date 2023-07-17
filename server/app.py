@@ -11,11 +11,11 @@ from models import User, CompletedPrompt, NudgePrompt, Nudge, JournalPrompt, Jou
 from config import app, db, api, bcrypt, CORS
 #importing LoginManager class
 #contains the code that lets your application and Flask-Login work together
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-#instance
-login_manager = LoginManager()
-#configure the instance for login
-login_manager.init_app(app)
+# from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+# #instance
+# login_manager = LoginManager()
+# #configure the instance for login
+# login_manager.init_app(app)
 #flask login
 #Flask-Login uses sessions for authentication
 #!!!!!MUST SET A SECRET KEY!!!!
@@ -47,9 +47,9 @@ def index():
 
 
 #------------------SIGNUP--------------------#
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.filter_by(id=user_id).first()
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.query.filter_by(id=user_id).first()
 
 
 class Signup(Resource):
@@ -85,6 +85,7 @@ class Login(Resource):
         try:
             data = request.get_json()
             user = User.query.filter_by(username=data.get('username')).first()
+            # import ipdb; ipdb.set_trace()
             if user.authenticate(data.get('password')):
                 session['user_id'] = user.id 
                 return make_response(user.to_dict(), 200)
@@ -127,6 +128,7 @@ api.add_resource(Logout, '/logout')
 #----------------AUTHORIZE-------------------#
 class AuthorizeSession(Resource):
     def get(self):
+        
         try:
             user = User.query.filter_by( id = session.get("user_id")).first()
             return make_response(user.to_dict(), 200)
