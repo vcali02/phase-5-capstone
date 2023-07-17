@@ -39,9 +39,15 @@ function App() {
 useEffect(() => {
   getRecs()
   getPillars()
+}, [user])
+
+
+//separate user info and rest. useEffect run based on dependency array. whenever dependency changes, the useeffect runs
+useEffect(() => {
   authorizeUser()
   getUser()
-}, [user])
+}, [])
+ console.log(user)
 
   //1. rec fetch
   function getRecs(){
