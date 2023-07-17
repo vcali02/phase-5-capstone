@@ -122,6 +122,7 @@ class CompletedPrompt(db.Model, SerializerMixin):
     serialize_rules = (
         "-nudge_prompt.completed_prompt",
         "-journal_prompt.completed_prompt",
+        "-user.completed_prompts"
     )
 
     #VALIDATION

@@ -359,7 +359,7 @@ if __name__ == '__main__':
             nudge_prompt = rc(p1_nudge_prompts)
             journal_prompt = rc(p1_journal_prompts)
             p1_completed_prompts.append(
-                CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
+                CompletedPrompt(user_id=one_user.id, user=one_user, nudge_prompt_id=nudge_prompt.id, nudge_prompt=nudge_prompt, journal_prompt_id=journal_prompt.id, journal_prompt=journal_prompt)
             )
         db.session.add_all(p1_completed_prompts)
         
@@ -371,8 +371,9 @@ if __name__ == '__main__':
             nudge_prompt = rc(p2_nudge_prompts)
             journal_prompt = rc(p2_journal_prompts)
             p2_completed_prompts.append(
-                CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
+                CompletedPrompt(user_id=one_user.id, user=one_user, nudge_prompt_id=nudge_prompt.id, nudge_prompt=nudge_prompt, journal_prompt_id=journal_prompt.id, journal_prompt=journal_prompt)
             )
+    
         db.session.add_all(p2_completed_prompts)
 
         #PILLAR 3 don't make assumptions
@@ -383,7 +384,7 @@ if __name__ == '__main__':
             nudge_prompt = rc(p3_nudge_prompts)
             journal_prompt = rc(p3_journal_prompts)
             p3_completed_prompts.append(
-                CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
+                CompletedPrompt(user_id=one_user.id, user=one_user, nudge_prompt_id=nudge_prompt.id, nudge_prompt=nudge_prompt, journal_prompt_id=journal_prompt.id, journal_prompt=journal_prompt)
             )
         db.session.add_all(p3_completed_prompts)
 
@@ -395,7 +396,7 @@ if __name__ == '__main__':
             nudge_prompt = rc(p4_nudge_prompts)
             journal_prompt = rc(p4_journal_prompts)
             p4_completed_prompts.append(
-                CompletedPrompt(user_id=one_user.id, nudge_prompt_id=nudge_prompt.id, journal_prompt_id=journal_prompt.id)
+                CompletedPrompt(user_id=one_user.id, user=one_user, nudge_prompt_id=nudge_prompt.id, nudge_prompt=nudge_prompt, journal_prompt_id=journal_prompt.id, journal_prompt=journal_prompt)
             )
         db.session.add_all(p4_completed_prompts)
         
