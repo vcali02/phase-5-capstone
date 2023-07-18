@@ -1,14 +1,10 @@
 import React, {useState} from 'react'
 import DrawerComp from "./DrawerComp"
-import { Link, useNavigate, NavLink, BrowserRouter } from "react-router-dom"
-import PropTypes from 'prop-types';
+import { useNavigate, NavLink } from "react-router-dom"
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import {useTheme, useMediaQuery, Grid, Toolbar, Avatar, IconButton, Menu, Fade, MenuItem} from '@mui/material'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SpaIcon from '@mui/icons-material/Spa';
 import { red } from '@mui/material/colors';
 
@@ -29,17 +25,19 @@ function Nav({updateUser, user}) {
     const handleClose = () => {
         setAnchorEl(null)
     }
-    // const navigate = useNavigate();
-    // function handleLogout() {
-	// 	fetch("http://localhost:5555/logout").then((res) => {
-	// 		if (res.ok){
-	// 			updateUser(null);
-	// 			navigate("/home");
-	// 		}
-	// 	});
-	// }
+    const navigate = useNavigate();
+    function handleLogout() {
+		fetch("/logout", {
+            method: "POST",
+        }).then((res) => {
+			if (res.ok){
+				updateUser(null);
+				navigate("/home");
+			}
+		});
+	}
     const login = <NavLink exact to="/auth"> LOG IN</NavLink>
-    const logout = <NavLink exact to = "/home"> LOG OUT</NavLink>
+    const logout = <NavLink exact to = "/home" onClick={handleLogout}> LOG OUT</NavLink>
     const profile = <NavLink exact to = "/users"> PROFILE </NavLink>
     const home = <NavLink exact to = "/home"> HOME </NavLink>
     const about = <NavLink exact to = "/about"> ABOUT</NavLink>

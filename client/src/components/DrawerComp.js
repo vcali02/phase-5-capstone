@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Drawer, IconButton, List, ListItemButton, ListItemIcon, ListItemText} from '@mui/material'
 import ListIcon from '@mui/icons-material/List';
 
-function DrawerComp({micelio, about, pillars, methods, growth, recommended}) {
+function DrawerComp({home, about, pillars, methods, growth, recommended}) {
 /*------------------STATE--------------------*/
 
     const [open, setOpen] = useState(false)
@@ -17,7 +17,7 @@ function DrawerComp({micelio, about, pillars, methods, growth, recommended}) {
         <List>
             <ListItemButton divider onClick={()=>setOpen(false)}>
                 <ListItemIcon>
-                    <ListItemText>{micelio}</ListItemText>
+                    <ListItemText>{home}</ListItemText>
                 </ListItemIcon>
             </ListItemButton>
             <ListItemButton divider onClick={()=>setOpen(false)}>

@@ -22,34 +22,12 @@ from config import app, db, api, bcrypt, CORS
 app.secret_key = b'\x99\xbc@p\xfd\x83;\x1e\xda9\xd7\xb2\x82\x90\xdfy'
 
 
-
-
-
-# app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.json.compact = False
-
-# migrate = Migrate(app, db)
-
-#bcrypt = Bcrypt(app)
-
-# db.init_app(app)
-
-# api = Api(app)
-
-# # Instantiate CORS
-# #CORS(app)
-
-@app.route('/')
-def index():
-    return '<h1>micelio</h1>'
+# @app.route('/')
+# def index():
+#     return '<h1>micelio</h1>'
 
 
 #------------------SIGNUP--------------------#
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.query.filter_by(id=user_id).first()
 
 
 class Signup(Resource):
@@ -75,13 +53,7 @@ api.add_resource(Signup, '/signup')
 #-------------------LOGIN--------------------#
 class Login(Resource):
     def post(self):
-        # data = request.get_json()
-        # user = User.query.filter_by(username = data.get("username")).first()
-        # password = request.get_json()["password"]
-
-        # if user.authenticate(password):
-        #     session["user_id"] = user.id
-        #     return user.to_dict(), 200
+   
         try:
             data = request.get_json()
             user = User.query.filter_by(username=data.get('username')).first()
@@ -96,28 +68,15 @@ class Login(Resource):
             return {"error": "hi", "message": str(e)}, 500
         
 
-        # try:
-        #     data = request.get_json()
-        #     user = User.query.filter_by(
-        #         username = data.get('username')).first()
-        #     if user.authenticate(data.get('password')):
-        #         # session['user_id'] = user.id
-        #         login_user(user, remember=True)
-        #         return make_response(user.to_dict(), 200)
-        # except:
-        #     return make_response({"401": "Unauthorized"},401)  
+
             
 api.add_resource(Login, '/login') 
 
 #-------------------LOGIN--------------------#
 #------------------LOGOUT--------------------#
-# @app.route("/logout", methods=["POST"])
-# @login_required
-# def logout():
-#     logout_user()
-#     return f'You have logged out of micelio.'
+
 class Logout(Resource):
-    def get(self):
+    def post(self):
         session["user_id"] = None
         return make_response("You have logged out of micelio", 204)
         
@@ -130,19 +89,19 @@ class AuthorizeSession(Resource):
     def get(self):
         
         try:
-            user = User.query.filter_by( id = session.get("user_id")).first()
+            user_id = session.get("user_id")
+            if user_id is None:
+                return {"error": "User not logged in.", "message": "User ID not found in session."}, 401
+
+            user = User.query.filter_by(id=user_id).first()
+            if user is None:
+                return {"error": "User not found.", "message": "User with the provided ID does not exist."}, 404
+
             return make_response(user.to_dict(), 200)
+
         except Exception as e:
             traceback.print_exc()
-            return {"error": "hi", "message": str(e)}, 500
-        # except:
-        #     return make_response({"message" : "Please log in"}, 401)
-
-
-        # if current_user.is_authenticated:
-        #     user = current_user.to_dict()
-        #     return user, 200
-        # return make_response({}, 401)
+            return {"error": "Internal Server Error.", "message": str(e)}, 500
         
 
 api.add_resource(AuthorizeSession, '/authorize_session')

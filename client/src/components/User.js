@@ -1,5 +1,4 @@
-import React, {useContext, useEffect} from 'react'
-import { useParams } from "react-router-dom"
+import React, {useContext} from 'react'
 import Context from "./Context"
 
 
@@ -12,7 +11,7 @@ function User() {
     
     
     // useEffect(() => {
-    //     fetch(`http://localhost:5555/users/${user.id}`)
+    //     fetch(`/users/${user.id}`)
     //     .then(res => res.json())
     //     .then(user => setUser(user))
     // },[user])  

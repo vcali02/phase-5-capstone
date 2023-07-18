@@ -1,17 +1,12 @@
 import React, {useContext, useState, useEffect} from 'react'
-import {Route, Routes, Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import JournalAction from './JournalAction'
 import NudgeAction from "./NudgeAction"
 import Context from "./Context"
 
-import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
-import Container from '@mui/material/Container'
-import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.js"
-import App from "../App.css"
-
 //fetch to /pillar/params.pillar_id
 //METHODS
-function ActionContainer({pillar}) {
+function ActionContainer() {
     const {user, setUser} = useContext(Context)
 
     /*------------------STATE--------------------*/
@@ -31,14 +26,14 @@ function ActionContainer({pillar}) {
     /*------------------PARAM--------------------*/
     /*-------------------CRUD--------------------*/
 
-    useEffect((e) => {
-        fetch(`http://localhost:5555/pillars/${params.pillar_id}`)
+    useEffect(() => {
+        fetch(`/pillars/${params.pillar_id}`)
         .then(res => res.json())
         .then(data => {
         setNudges(data.nudge)
         setJournals(data.journal)
     })
-    },[user])
+    },[])
 
     /*-------------------CRUD--------------------*/
     /*------------------CONST--------------------*/

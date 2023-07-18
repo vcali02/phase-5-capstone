@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import {useFormik} from "formik";
 import * as yup from "yup";
 import {useNavigate} from "react-router-dom"
@@ -37,7 +37,7 @@ function Auth({updateUser}){
         validationSchema: schema,
       //submit callback
         onSubmit: (values, actions) => {
-            fetch( signup ? "http://localhost:5555/login" : "http://localhost:5555/signup", {
+            fetch( signup ? "/login" : "/signup", {
                 method: "POST",
                 headers: {
                     "content-type" : "application/json"
