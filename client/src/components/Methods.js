@@ -16,14 +16,14 @@ function Methods() {
     /*-------------------CRUD--------------------*/
 
     useEffect((e) => {
-        fetch(`http://localhost:5555/nudges/1`)
+        fetch(`/nudges/1`)
         .then(res => res.json())
         .then(nMethod => setN(nMethod))
     },[])
     console.log(jMethod)
 
     useEffect((e) => {
-        fetch(`http://localhost:5555/journals/1`)
+        fetch(`/journals/1`)
         .then(res => res.json())
         .then(jMethod => setJ(jMethod))
     },[])

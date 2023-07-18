@@ -6,7 +6,7 @@ import Context from "./Context"
 
 import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
 import Container from '@mui/material/Container'
-import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.js"
+// import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.js"
 import App from "../App.css"
 
 //fetch to /pillar/params.pillar_id
@@ -32,7 +32,7 @@ function ActionContainer({pillar}) {
     /*-------------------CRUD--------------------*/
 
     useEffect((e) => {
-        fetch(`http://localhost:5555/pillars/${params.pillar_id}`)
+        fetch(`/pillars/${params.pillar_id}`)
         .then(res => res.json())
         .then(data => {
         setNudges(data.nudge)

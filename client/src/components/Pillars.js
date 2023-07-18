@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import {Route, Routes, Link, useParams } from "react-router-dom";
 import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
 import Container from '@mui/material/Container'
-import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.js"
+// import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.js"
 import App from "../App.css"
 
 function Pillars({pillar, journal, nudge}) {

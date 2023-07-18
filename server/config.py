@@ -5,11 +5,11 @@ from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_restful import Api
-#flask extension; import the class
+# flask extension; import the class
 from flask_sqlalchemy import SQLAlchemy
-#the metadata class is used to store/represent database metadata
-#usually: python classes called ORM models
-#metadata class: define additional database structure 
+# the metadata class is used to store/represent database metadata
+# usually: python classes called ORM models
+# metadata class: define additional database structure
 from sqlalchemy import MetaData
 from flask_bcrypt import Bcrypt
 

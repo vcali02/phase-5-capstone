@@ -21,7 +21,7 @@ function ActionOptions({action}) {
   /*-------------------CRUD--------------------*/
   
   useEffect((e) => {
-      fetch(`http://localhost:5555/jprompts/${action.id}`)
+      fetch(`/jprompts/${action.id}`)
       .then(res => res.json())
       .then(prompt => {
           setPrompt(prompt)

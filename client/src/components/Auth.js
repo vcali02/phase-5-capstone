@@ -37,7 +37,7 @@ function Auth({updateUser}){
         validationSchema: schema,
       //submit callback
         onSubmit: (values, actions) => {
-            fetch( signup ? "http://localhost:5555/login" : "http://localhost:5555/signup", {
+            fetch( signup ? "/login" : "/signup", {
                 method: "POST",
                 headers: {
                     "content-type" : "application/json"

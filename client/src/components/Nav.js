@@ -29,17 +29,19 @@ function Nav({updateUser, user}) {
     const handleClose = () => {
         setAnchorEl(null)
     }
-    // const navigate = useNavigate();
-    // function handleLogout() {
-	// 	fetch("http://localhost:5555/logout").then((res) => {
-	// 		if (res.ok){
-	// 			updateUser(null);
-	// 			navigate("/home");
-	// 		}
-	// 	});
-	// }
+    const navigate = useNavigate();
+    function handleLogout() {
+		fetch("/logout", {
+            method: 'POST',
+        }).then((res) => {
+			if (res.ok){
+				updateUser(null);
+				navigate("/home");
+			}
+		});
+	}
     const login = <NavLink exact to="/auth"> LOG IN</NavLink>
-    const logout = <NavLink exact to = "/home"> LOG OUT</NavLink>
+    const logout = <NavLink exact to = "/home" onClick={handleLogout}> LOG OUT</NavLink>
     const profile = <NavLink exact to = "/users"> PROFILE </NavLink>
     const home = <NavLink exact to = "/home"> HOME </NavLink>
     const about = <NavLink exact to = "/about"> ABOUT</NavLink>

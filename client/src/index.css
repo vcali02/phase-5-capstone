@@ -6,7 +6,7 @@
   .App-header {
     background-color: var(--palette-b);
     height: 230px;
-    background-image: url("/Users/valeria/development/phase-5/micelio/client/public/micelio.png");
+    /* background-image: url("/Users/valeria/development/phase-5/micelio/client/public/micelio.png"); */
     background-position: 50% 0% ;
     background-repeat: no-repeat;
     background-size: 400px;

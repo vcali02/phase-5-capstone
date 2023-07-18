@@ -21,7 +21,7 @@ function NudgeAction({action}) {
     /*-------------------CRUD--------------------*/
     
     useEffect((e) => {
-        fetch(`http://localhost:5555/nprompts/${action.id}`)
+        fetch(`/nprompts/${action.id}`)
         .then(res => res.json())
         .then(prompt => {
             setPrompt(prompt)

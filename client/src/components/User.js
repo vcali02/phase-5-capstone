@@ -12,7 +12,7 @@ function User() {
     
     
     // useEffect(() => {
-    //     fetch(`http://localhost:5555/users/${user.id}`)
+    //     fetch(`/users/${user.id}`)
     //     .then(res => res.json())
     //     .then(user => setUser(user))
     // },[user])  
