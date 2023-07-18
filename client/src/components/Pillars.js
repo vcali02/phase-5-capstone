@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {CardActionArea, CardActions } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import {Route, Routes, Link, useParams } from "react-router-dom";
-import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
-import Container from '@mui/material/Container'
-import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.js"
-import App from "../App.css"
+import { Link } from "react-router-dom";
+import {Button, Typography} from '@mui/material';
+
 
 function Pillars({pillar, journal, nudge}) {
 

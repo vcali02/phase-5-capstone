@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import {useParams } from "react-router-dom";
 import {CardActionArea, CardActions } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
-import Container from '@mui/material/Container'
+import {Button, Typography} from '@mui/material';
 
 function NudgeAction({action}) {
     console.log(action.id)
@@ -21,7 +19,7 @@ function NudgeAction({action}) {
     /*-------------------CRUD--------------------*/
     
     useEffect((e) => {
-        fetch(`http://localhost:5555/nprompts/${action.id}`)
+        fetch(`/nprompts/${action.id}`)
         .then(res => res.json())
         .then(prompt => {
             setPrompt(prompt)

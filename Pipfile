@@ -14,6 +14,7 @@ flask-bcrypt = "*"
 faker = "*"
 flask-login = "*"
 ipdb = "*"
+flask-session = "*"
 
 [dev-packages]
 

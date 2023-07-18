@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 
-# Remote library imports
 import traceback 
 from flask import make_response, request, session
 from flask_migrate import Migrate
@@ -226,8 +225,8 @@ class CompletedPrompts(Resource):
         )
         return res
 
-#POST??????? maybe not
-#front end even listener will trigger a GET request to display the data 
+
+# #POST
 #     def post(self):
 #         #this gives us whatever is sent to the backend
 #         #data is an object
@@ -272,6 +271,24 @@ class OneCompletedPrompt(Resource):
             200
         )
         return res
+# #PATCH /completed_prompts/<int:id>
+#     def patch(self, id):
+#         cp = CompletedPrompt.query.filter_by(id=id).first()
+#         data = request.to_json()
+#         if not cp:
+#             return {"error" : "User not found."}, 404
+#         else:
+#             try:
+#                 for attr in data:
+#                     setattr(cp, attr, data.get(attr))
+#                 db.session.add(cp)
+#                 db.session.commit()
+#                 return make_response(
+#                     user.to_dict(),
+#                     202
+#                 )
+#             except:
+#                 return make_response({"400" : "Completed Prompt update unsuccessful."}, 400)
 
 #DELETE /completed_prompts/<int:id>
     def delete(self, id):
@@ -294,7 +311,18 @@ def completed_by_user(id):
         .filter(User.id == id)
         .all()
     )
-    cp_dict = [cp.to_dict() for cp in completed]
+    cp_dict = [cp.to_dict(only=(
+        "id", "journal_prompt", 
+        "journal_prompt.action_prompt", 
+        "journal_prompt.action_prompt.action_type.pillar_id", 
+        "journal_prompt.completed_at", 
+        "journal_prompt.journals_id",
+        "nudge_prompt", 
+        "nudge_prompt.action_prompt", 
+        "nudge_prompt.action_prompt.action_type.pillar_id", 
+        "nudge_prompt.completed_at", 
+        "nudge_prompt.nudges_id"
+        )) for cp in completed]
     return make_response(cp_dict, 200)
     
 #     @app.route("/jprompts/<int:id>", methods=["GET"])
@@ -519,7 +547,7 @@ def nprompts(id):
         .filter(Pillar.id == id)
         .all()
     )
-    np_dict = [n.to_dict(only=("action_prompt",)) for n in nudge_prompts]
+    np_dict = [n.to_dict(only=("action_prompt", "nudges_id")) for n in nudge_prompts]
     return make_response(np_dict, 200)
 
 #Journal prompts by PILLAR ID
@@ -533,7 +561,16 @@ def jprompts(id):
         .filter(Pillar.id == id)
         .all()
     )
-    jp_dict = [j.to_dict(only=("action_prompt",)) for j in journal_prompts]
+    jp_dict = [j.to_dict(only=(
+        "action_prompt", 
+        "id", 
+        "journals_id", 
+        "completed_at", 
+        "action_type.action_type", 
+        "action_type.id", 
+        "action_type.pillar_id", 
+        "completed_prompt.user.id"
+        )) for j in journal_prompts]
     return make_response(jp_dict, 200)
 
 

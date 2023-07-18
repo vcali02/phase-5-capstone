@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link } from "react-router-dom"
-import {CardActionArea, CardActions } from '@mui/material';
+import {CardActionArea } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
+import {Typography} from '@mui/material';
 import Container from '@mui/material/Container'
 
 function About() {

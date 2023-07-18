@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import {Route, Routes, useNavigate, BrowserRouter } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./Home";
 import Auth from "./Auth";
 import About from "./About";
@@ -14,12 +14,8 @@ import Methods from "./Methods"
 import ActionOptions from "./JournalAction"
 import User from "./User"
 
-import {Button, Paper, Grid, Typography, CssBaseline, ThemeProvider, Box} from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Container from '@mui/material/Container'
-import theme from "/Users/valeria/development/phase-5/micelio/client/src/theme.js"
+import {Grid, ThemeProvider} from '@mui/material';
+import theme from "../theme.js"
 
 function App() {
 
@@ -45,13 +41,13 @@ useEffect(() => {
 //separate user info and rest. useEffect run based on dependency array. whenever dependency changes, the useEffect runs
 useEffect(() => {
   authorizeUser()
-  getUser()
+  // getUser()
 }, [])
  console.log(user)
 
   //1. rec fetch
   function getRecs(){
-    fetch('http://localhost:5555/recommendations')
+    fetch('/recommendations')
     .then(res => res.json())
     //1st instruction post rendering js obj:
     //grab state recs then UPDATE the state to BE the recs obj
@@ -60,7 +56,7 @@ useEffect(() => {
 
   //2. pillars fetch
   function getPillars(){
-    fetch('http://localhost:5555/pillars')
+    fetch('/pillars')
     .then(res => res.json())
     .then(pillars => setPillars(pillars))
   }
@@ -68,28 +64,31 @@ useEffect(() => {
 
   //5. login/logout/signup
   function authorizeUser(){
+    console.log("user", user)
     if (user == null) {
-      fetch('http://localhost:5555/authorize_session')
+      console.log("user", user)
+      fetch('/authorize_session')
       .then(response => {
+        console.log("response: ", response)
         if (response.ok) {
           response.json().then((user) => setUser(user))
         } else {
           setUser(null)
         }
-      })
+      }).catch((error) => console.log({error}))
     }
   }
 
   // }, [user]);
-  function getUser(){
-    if (user && user.id) {
-      fetch(`http://localhost:5555/users/${user.id}`)
-        .then(res => res.json())
-        .then(fetchedUser => {
-          setUser(fetchedUser);
-        });
-    }
-  }
+  // function getUser(){
+  //   if (user && user.id) {
+  //     fetch(`http://localhost:5555/users/${user.id}`)
+  //       .then(res => res.json())
+  //       .then(fetchedUser => {
+  //         setUser(fetchedUser);
+  //       });
+  //   }
+  // }
   
   console.log(user);
 
@@ -118,7 +117,7 @@ useEffect(() => {
 
     const navigate = useNavigate();
     function handleLogout() {
-		fetch("http://localhost:5555/logout").then((res) => {
+		fetch("/logout").then((res) => {
 			if (res.ok){
 				updateUser(null);
 				navigate("/home");

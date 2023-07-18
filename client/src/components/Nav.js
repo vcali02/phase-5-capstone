@@ -1,19 +1,15 @@
 import React, {useState} from 'react'
 import DrawerComp from "./DrawerComp"
-import { Link, useNavigate, NavLink, BrowserRouter } from "react-router-dom"
-import PropTypes from 'prop-types';
+import {NavLink } from "react-router-dom"
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import {useTheme, useMediaQuery, Grid, Toolbar, Avatar, IconButton, Menu, Fade, MenuItem} from '@mui/material'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SpaIcon from '@mui/icons-material/Spa';
 import { red } from '@mui/material/colors';
 
 
-function Nav({updateUser, user}) {
+function Nav() {
     /*------------------STATE--------------------*/
     const theme = useTheme()
     const isMatch = useMediaQuery(theme.breakpoints.down('md'))
@@ -38,17 +34,17 @@ function Nav({updateUser, user}) {
 	// 		}
 	// 	});
 	// }
-    const login = <NavLink exact to="/auth"> LOG IN</NavLink>
-    const logout = <NavLink exact to = "/home"> LOG OUT</NavLink>
-    const profile = <NavLink exact to = "/users"> PROFILE </NavLink>
-    const home = <NavLink exact to = "/home"> HOME </NavLink>
-    const about = <NavLink exact to = "/about"> ABOUT</NavLink>
-    const pillars = <NavLink exact to = "/pillars"> PILLARS </NavLink>
-    const methods = <NavLink exact to = "/methods"> METHODS </NavLink>
+    const login = <NavLink  to="/auth"> LOG IN</NavLink>
+    const logout = <NavLink  to = "/home"> LOG OUT</NavLink>
+    const profile = <NavLink  to = "/users"> PROFILE </NavLink>
+    const home = <NavLink  to = "/home"> HOME </NavLink>
+    const about = <NavLink  to = "/about"> ABOUT</NavLink>
+    const pillars = <NavLink  to = "/pillars"> PILLARS </NavLink>
+    const methods = <NavLink  to = "/methods"> METHODS </NavLink>
     {/* <NavLink exact to = "/nudges">  </NavLink>
     <NavLink exact to = "/journals">  </NavLink> */}
-    const growth = <NavLink exact to = "/growth"> GROWTH </NavLink>
-    const recommended = <NavLink exact to = "/recommended"> RECOMMENDED</NavLink>
+    const growth = <NavLink  to = "/growth"> GROWTH </NavLink>
+    const recommended = <NavLink  to = "/recommended"> RECOMMENDED</NavLink>
 
 
     return (

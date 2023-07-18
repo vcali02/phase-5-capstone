@@ -17,9 +17,6 @@ metadata = MetaData(naming_convention={
     #specifies how the name of the foreign key should be generated
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
 })
-#an instance of SQLAlchemy
-#db = SQLAlchemy() 
-db = SQLAlchemy(metadata=metadata)
 
 #password hashing
 from config import db, bcrypt
@@ -57,6 +54,8 @@ class User(db.Model, SerializerMixin):
         #"-completed_prompts.user"
         "-_password_hash",
     )
+
+   
 
     #AUTH VALIDATION
     @hybrid_property

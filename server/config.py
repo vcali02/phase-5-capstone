@@ -12,14 +12,18 @@ from flask_sqlalchemy import SQLAlchemy
 #metadata class: define additional database structure 
 from sqlalchemy import MetaData
 from flask_bcrypt import Bcrypt
+from flask_session import Session
 
 # Local imports
-
 # Instantiate app, set attributes
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
+
+# app.config["SESSION_PERMANENT"] = True
+# app.config["SESSION_TYPE"] = "filesystem"
+# Session(app)
 
 # Define metadata, instantiate db
 metadata = MetaData(naming_convention={
@@ -35,4 +39,8 @@ api = Api(app)
 # Instantiate CORS
 CORS(app)
 
+# CORS(app, resources={r"*": {"origins": "*"}})
+
 bcrypt = Bcrypt(app)
+
+# app.secret_key = b'\x99\xbc@p\xfd\x83;\x1e\xda9\xd7\xb2\x82\x90\xdfy'

@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import {CardActionArea, CardActions } from '@mui/material';
+import {CardActionArea } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import {Button, Box, Paper, Grid, Typography, CssBaseline, ThemeProvider} from '@mui/material';
-import Container from '@mui/material/Container'
+import {Typography} from '@mui/material';
 
 function Methods() {
     /*------------------STATE--------------------*/
@@ -16,14 +15,14 @@ function Methods() {
     /*-------------------CRUD--------------------*/
 
     useEffect((e) => {
-        fetch(`http://localhost:5555/nudges/1`)
+        fetch(`/nudges/1`)
         .then(res => res.json())
         .then(nMethod => setN(nMethod))
     },[])
     console.log(jMethod)
 
     useEffect((e) => {
-        fetch(`http://localhost:5555/journals/1`)
+        fetch(`/journals/1`)
         .then(res => res.json())
         .then(jMethod => setJ(jMethod))
     },[])
